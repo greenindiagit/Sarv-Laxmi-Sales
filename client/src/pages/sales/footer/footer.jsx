@@ -13,7 +13,6 @@ import React, { useState } from "react";
 import ChatModal from "../../chat";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faComment } from "@fortawesome/free-solid-svg-icons";
-import qrCodeImage from "/logo/qrcode.png";
 
 
 function Footer() {
@@ -35,12 +34,6 @@ function Footer() {
               New Delhi - 110030, INDIA.
               <br />
               GST TIN – 07BKWPM4815J1ZJ
-            </p>
-            <p className="mb-1">
-              <FaShoppingCart className="me-2" /> Online Store
-            </p>
-            <p>
-              <FaStore className="me-2" /> Offline Store
             </p>
           </div>
 
@@ -121,9 +114,6 @@ function Footer() {
                 <FaRegCreditCard className="me-2" /> Debit / Credit Card
               </li>
               <li>
-                <FaPaypal className="me-2" /> PayPal / Wire Pay
-              </li>
-              <li>
                 <FaWallet className="me-2" /> BHIM / Wallet Pay
               </li>
             </ul>
@@ -140,11 +130,6 @@ function Footer() {
               <li>Metal Seal</li>
               <li>Plastic Seal</li>
             </ul>
-            <p className="fw-bold">
-              <a href="/shop" className="text-light">
-                Shop
-              </a>
-            </p>
           </div>
         </div>
       </div>
@@ -152,20 +137,20 @@ function Footer() {
       {/* Footer bottom */}
       <div className="bg-secondary text-light py-3 mt-4">
         <div className="container d-flex flex-column flex-md-row justify-content-between align-items-center">
-          <div className="text-center text-md-start">
-            <p className="mb-1 small">
-              2000-2024 © Sarv Laxmi Sales Corporation
-            </p>
-            <p className="mb-0 small">Powered By SLS Corporation</p>
-          </div>
-          <div className="text-center text-md-end mt-3 mt-md-0">
-            <p className="fw-bold mb-2">Sarv Laxmi Sales Corporation</p>
-            <img
-              src={qrCodeImage}
-              alt="SLS Corporation QR Code"
-              className="bg-white p-1 rounded"
-            />
-          </div>
+       <div className="container copyright text-center">
+  <p
+    style={{
+      borderColor: "rgba(255, 255, 255, 0.1)",
+      borderStyle: "solid",
+      borderWidth: "1px",
+      padding: "10px",
+    }}
+  >
+    © Copyright 2025 Sarv Laxmi Sales Corporation Pvt. Ltd. All Rights Reserved.
+    CIN: U51909DL2022PTC406952
+  </p>
+</div>
+
             <button
         onClick={handleClick}
         className="btn btn-primary rounded-circle position-fixed"

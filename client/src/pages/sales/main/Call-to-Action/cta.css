@@ -1,0 +1,80 @@
+.cta-section {
+  background-color:#2134C1; /* Light green background */
+  color: #FFFFFF;          /* Text color */
+  padding: 2rem;
+  gap: 1.5rem;
+}
+
+.cta-left h2 {
+  font-size: 1.75rem;
+}
+
+.cta-left p {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Buttons */
+.cta-btn-phone,
+.cta-btn-order {
+  display: block;
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border-radius: 50px;
+  font-size: 1.1rem;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+/* Phone button */
+.cta-btn-phone {
+  background-color: #d87676;
+  color: #0D1B2A;
+  border: 2px solid #dabebe;
+}
+
+.cta-btn-phone:hover {
+  background-color: #2134C1; /* darker green hover */
+  color: #ffffff;
+}
+
+/* Order button */
+.cta-btn-order {
+  background-color:#d87676; /* Amber color */
+  color: #0D1B2A;
+  border: 2px solid  #dabebe;
+}
+
+.cta-btn-order:hover {
+  background-color: #2134C1; /* darker amber */
+  color:#ffffff;
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+  .cta-section {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .cta-left {
+    text-align: center;
+  }
+
+  .cta-right {
+    width: 100%;
+  }
+}
+
+@media (max-width: 576px) {
+  .cta-left h2 {
+    font-size: 1.5rem;
+  }
+
+  .cta-btn-phone,
+  .cta-btn-order {
+    font-size: 1rem;
+    padding: 0.65rem 1rem;
+  }
+}

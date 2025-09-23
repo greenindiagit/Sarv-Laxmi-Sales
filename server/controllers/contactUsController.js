@@ -1,10 +1,10 @@
 import ContactUs from '../models/ContactUs.js';
 
 const submitContactForm = async (req, res) => {
-  const { name, email, message } = req.body;
+  const { name, landingNo,mobile,email,extension, comment } = req.body;
 
   try {
-    const newContact = new ContactUs({ name, email, message });
+    const newContact = new ContactUs({ name, landingNo,mobile,email,extension, comment });
     await newContact.save();
 
     res.status(201).json({ message: 'Contact saved successfully!' });

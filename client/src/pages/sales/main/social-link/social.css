@@ -1,0 +1,115 @@
+/* Import Great Vibes font (add to your HTML <head> or CSS) */
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
+
+/* Container for Follow Us section */
+.follow-us-section {
+  background: #f8f9fa;
+  padding: 2rem;
+  text-align: center;
+}
+
+/* Follow Us title */
+.follow-us-title {
+  font-family: 'Great Vibes', cursive, sans-serif;
+  font-size: 1.5rem;
+  color: #333;
+  margin-bottom: 1.5rem;
+}
+
+/* Social icons container */
+.social-icons-container {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+/* Base style: icon only, no background */
+.social-icon {
+  color: inherit; /* Brand color */
+  font-size: 1.5rem;
+  padding: 0.5rem;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  position: relative;
+  overflow: hidden;
+  background: transparent;
+  box-shadow: none;
+  cursor: pointer;
+  outline: none;
+}
+
+/* Brand colors */
+.social-icon.facebook { color: #1877f2; }
+.social-icon.twitter { color: #1da1f2; }
+.social-icon.linkedin { color: #0a66c2; }
+.social-icon.whatsapp { color: #25d366; }
+.social-icon.youtube { color: #ff0000; }
+.social-icon.instagram { color: #e1306c; }
+.social-icon.telegram { color: #0088cc; }
+.social-icon.github { color: #333333; }
+.social-icon.pinterest { color: #bd081c; }
+.social-icon.tiktok { color: #ff0050; }
+
+/* Hover effect: show background */
+.social-icon:hover {
+  background: transparent;
+  transform: scale(1.1);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Active/click effect */
+.social-icon:active {
+  transform: scale(0.95);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Focus outline for accessibility */
+.social-icon:focus {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}
+
+/* Optional: pulse effect on hover */
+.social-icon::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  transition: all 0.3s ease;
+  transform: translate(-50%, -50%);
+}
+
+.social-icon:hover::before {
+  width: 100%;
+  height: 100%;
+}
+
+/* Responsive sizing */
+@media (max-width: 768px) {
+  .social-icon {
+    font-size: 1.3rem;
+    padding: 0.6rem;
+  }
+  .social-icons-container {
+    gap: 0.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .social-icon {
+    font-size: 1.2rem;
+    padding: 0.5rem;
+  }
+  .social-icons-container {
+    gap: 0.5rem;
+  }
+}

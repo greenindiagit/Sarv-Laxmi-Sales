@@ -1,0 +1,46 @@
+import {
+  FaFacebook,
+  FaTwitter,
+  FaLinkedin,
+  FaWhatsapp,
+  FaYoutube,
+  FaInstagram,
+} from "react-icons/fa";
+import "./social.css"
+
+function SocialSection() {
+  return (
+        <div className="row justify-content-center align-items-center p-3">
+          {/* Left: Follow Us text */}
+          <div className="col-md-3 text-center text-md-start mb-3 mb-md-0">
+           <h2 className="follow-us-title">Follow Us</h2>
+
+          </div>
+
+          {/* Right: Social icons */}
+          <div className="col-md-6 d-flex justify-content-center justify-content-md-start">
+            <div className="d-flex gap-3 fs-4 flex-wrap">
+              <a href="#" className="social-icon facebook">
+                <FaFacebook />
+              </a>
+              <a href="#" className="social-icon twitter">
+                <FaTwitter />
+              </a>
+              <a href="#" className="social-icon linkedin">
+                <FaLinkedin />
+              </a>
+              <a href="#" className="social-icon whatsapp">
+                <FaWhatsapp />
+              </a>
+              <a href="#" className="social-icon youtube">
+                <FaYoutube />
+              </a>
+              <a href="#" className="social-icon instagram">
+                <FaInstagram />
+              </a>
+            </div>
+          </div>
+        </div>
+  );
+}
+export default SocialSection;

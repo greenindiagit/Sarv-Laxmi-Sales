@@ -1,3 +1,46 @@
+
+
+/* new css  */
+.navbar-custom {
+  background-color: #2134C1; /* dark blue from logo */
+}
+
+.logoImage{
+ background-color: #e4e5ef;
+ 
+}
+.navbar-custom .navbar-brand img {
+  filter: brightness(100%);
+}
+
+.navbar-custom .navbar-brand,
+.navbar-custom .nav-link,
+.navbar-custom .navbar-toggler-icon {
+  color: #ffffff; /* white text */
+}
+
+.navbar-custom .nav-link {
+  transition: color 0.3s ease;
+}
+
+.navbar-custom .nav-link:hover,
+.navbar-custom .nav-link:focus {
+  color: #FFD600; /* bright accent yellow on hover */
+}
+
+.navbar-custom .btn-primary {
+  background-color: #FFD600; /* accent yellow */
+  border: none;
+  color: #2134C1; /* dark blue text */
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+.navbar-custom .btn-primary:hover,
+.navbar-custom .btn-primary:focus {
+  background-color: #E6B800; /* darker yellow */
+  color: #2134C1;
+}
 /* WhatsApp icon desktop inside navbar */
 .whatsapp-desktop {
   color: #25d366;
@@ -33,42 +76,6 @@
 .whatsapp-mobile:hover {
   transform: scale(1.1);
   box-shadow: 0 6px 10px rgba(0,0,0,0.3);
-}
-
-/* Quote button styling */
-.quote-btn {
-  border-radius: 25px;
-  padding: 8px 20px;
-  font-size: 14px;
-}
-
-/* Optional: make navbar links bold and hover color */
-/* .navbar-nav .nav-link {
-  font-weight: 500;
-  color: #333;
-}
-
-.navbar-nav .nav-link:hover {
-  color: #007bff;
-} */
-/* Ensure dropdown items show pointer cursor */
-.dropdown-menu .dropdown-item {
-  cursor: pointer;
-  transition: background-color 0.2s ease, color 0.2s ease;
-}
-
-/* Hover effect */
-.dropdown-menu .dropdown-item:hover {
-  background-color: #007bff; /* Bootstrap primary color */
-  color: #fff !important;   /* White text */
-}
-.dropdown-menu .dropdown-item.active,
-.dropdown-menu .dropdown-item:active {
-  background-color: #0056b3 !important; /* darker blue */
-  color: #fff !important;
-}
-.logo-text {
-  font-family: cursive;
 }
 .whatsappicon{
    font-size: 28px;

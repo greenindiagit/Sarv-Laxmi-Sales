@@ -9,16 +9,13 @@ export default function header() {
   return (
     <>
       {/* Bootstrap Navbar */}
-      <nav className="navbar navbar-expand-md navbar-light bg-light py-3 shadow-sm">
+    <nav className="navbar navbar-expand-md navbar-custom py-3 shadow-sm">
   <div className="container">
     {/* Brand Section (Logo + Name stacked) */}
     <div className="d-flex flex-column">
       <Link className="navbar-brand p-0 m-0" to="/">
-        <img src={logo} alt="Logo" height="50" />
+        <img src={logo} alt="Logo" height="50"  className="logoImage"/>
       </Link>
-      <p className="logo-text mt-2  text-primary">
-        Sarv Laxmi Sales Corporation
-      </p>
     </div>
 
     {/* Hamburger Toggle */}
@@ -69,9 +66,9 @@ export default function header() {
         <li className="nav-item">
           <Link className="nav-link" to="/contact">Contact Us</Link>
         </li>
-        <li className="nav-item">
+        {/* <li className="nav-item">
           <Link className="nav-link" to="/store">Store</Link>
-        </li>
+        </li> */}
 
         {/* Quote button */}
         <li className="nav-item">

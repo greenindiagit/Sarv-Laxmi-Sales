@@ -1,26 +1,19 @@
 import React, { useState } from "react";
-import { GiCow   } from "react-icons/gi";
+import { GiCow } from "react-icons/gi";
 import {
-  FaPaintBrush,
-  FaCode,
-  FaHospital ,
-  FaTruckMoving ,
-  FaBullhorn,
+  FaHospital,
+  FaTruckMoving,
   FaShoppingCart,
   FaUsers,
   FaHeadset,
   FaGlobe,
   FaIndustry,
   FaShieldAlt,
-  FaFacebook,
-  FaTwitter,
-  FaLinkedin,
-  FaWhatsapp,
-  FaYoutube,
-  FaInstagram,
 } from "react-icons/fa";
 import MapComponent from "./MapComponent";
 import "../../../index.css";
+import SocialSection from "./social-link/social";
+import CTA from "./Call-to-Action/cta";
 const accordionData = [
   {
     title: "Best Quality Seals",
@@ -63,20 +56,21 @@ export default function About() {
   return (
     <>
       {/* About Us Section */}
-      <section className="py-5" style={{ background: "#b6baba",color: "#ffff" }}>
+      <section
+        className="section-light"
+      >
         <div className="container">
-          <div className="mb-5">
             <h2 className="mb-3 text-center">About Us</h2>
             <p>
               At{" "}
-              <strong className="text-white">
+              <strong className="text-dark">
                 Sarv Laxmi Sales Corporation
               </strong>
               , we believe security is not just a product—it’s a promise. Since
               our inception in
-              <strong> 2018 </strong>, we have been delivering world-class sealing
-              and locking solutions tailored to diverse industries such as
-              logistics, transport, warehousing, and shipping.
+              <strong> 2018 </strong>, we have been delivering world-class
+              sealing and locking solutions tailored to diverse industries such
+              as logistics, transport, warehousing, and shipping.
             </p>
             <p>
               We are built on strong values of{" "}
@@ -87,7 +81,9 @@ export default function About() {
             </p>
 
             {/* <!-- Core Values --> */}
-            <h5 className="mt-3 font-weight-bold text-white">Our Core Values:</h5>
+            <h5 className="mt-3 font-weight-bold text-dark">
+              Our Core Values:
+            </h5>
             <ul className="list-unstyled pl-3">
               <li>✔ Commitment to Quality</li>
               <li>✔ Customer-Centric Approach</li>
@@ -109,14 +105,11 @@ export default function About() {
               security sealing products, setting new benchmarks in quality and
               customer trust.
             </p> */}
-
           </div>
-          </div>
-         
-          </section>
-           {/* Info Cards */}
-          <section >
-            <div className="container py-5">
+      </section>
+      {/* Info Cards */}
+      <section className="section-light">
+        <div className="container">
           <div className="row g-4">
             <div className="col-md-4">
               <div className="card h-100 shadow">
@@ -165,7 +158,8 @@ export default function About() {
       </section>
 
       {/* History Section */}
-      <section className="py-5 " style={{ background: "#f1f2f0",color: "#000" }}>
+      <section
+        className="section-light">
         <div className="container">
           <h2 className="mb-4 text-center">Our History</h2>
           <p>
@@ -194,7 +188,7 @@ export default function About() {
       </section>
 
       {/* Features Section */}
-      <section className="py-5 bg-light">
+      <section className="section-light">
         <div className="container">
           <h2 className="text-center mb-5">Our Features</h2>
           <div className="row g-4 text-center">
@@ -214,7 +208,7 @@ export default function About() {
             <div className="col-md-4">
               <div className="card h-100 shadow border-0">
                 <div className="card-body">
-                  <FaTruckMoving  className="mb-3 fs-1 text-info" />
+                  <FaTruckMoving className="mb-3 fs-1 text-info" />
                   <h5>logistics & supply chain</h5>
                   <p>
                     Our R&D team develops highly secure seals with maximum cost
@@ -240,7 +234,7 @@ export default function About() {
             <div className="col-md-4">
               <div className="card h-100 shadow border-0">
                 <div className="card-body">
-                  <GiCow    className="mb-3 fs-1 text-info" />
+                  <GiCow className="mb-3 fs-1 text-info" />
                   <h5>Dairy Industry</h5>
                   <p>
                     We provide the latest updates through social media and
@@ -253,7 +247,7 @@ export default function About() {
             <div className="col-md-4">
               <div className="card h-100 shadow border-0">
                 <div className="card-body">
-                  <FaHospital  className="mb-3 fs-1 text-info" />
+                  <FaHospital className="mb-3 fs-1 text-info" />
                   <h5>Healthcare & Pharmaceuticals</h5>
                   <p>
                     Our products are available on major eCommerce and B2B
@@ -280,7 +274,8 @@ export default function About() {
       </section>
 
       {/* Why Choose Us Section */}
-      <section className="py-5"style={{ background: "#f1f2f0",color: "#000" }}>
+      <section
+        className="section-light">
         <div className="container">
           <div className="row align-items-center g-5">
             <div className="col-md-6">
@@ -292,9 +287,13 @@ export default function About() {
             </div>
             <div className="col-md-6">
               <h2 className="mb-4">Why Choose Us?</h2>
-              <div className="accordion" id="chooseUsAccordion" >
+              <div className="accordion" id="chooseUsAccordion">
                 {accordionData.map((item, index) => (
-                  <div className="accordion-item" key={index} style={{ background: "#f1f2f0",color: "#000" }}>
+                  <div
+                    className="accordion-item"
+                    key={index}
+                    style={{ background: "#f1f2f0", color: "#000" }}
+                  >
                     <h2 className="accordion-header">
                       <button
                         className={`accordion-button ${
@@ -311,7 +310,7 @@ export default function About() {
                         activeIndex === index ? "show" : ""
                       }`}
                     >
-                      <div className="accordion-body" >{item.content}</div>
+                      <div className="accordion-body">{item.content}</div>
                     </div>
                   </div>
                 ))}
@@ -322,8 +321,8 @@ export default function About() {
       </section>
 
       {/* Stats + CTA + Social + Video/Map */}
-      <section className="bg-white text-dark">
-        <div className="container">
+      <section className="section-light">
+        <div className="container ">
           {/* Stats Section */}
           <div className="row text-center mb-5">
             <div className="col-md-3 col-6 mb-4">
@@ -347,92 +346,39 @@ export default function About() {
               <p>Production Capacity</p>
             </div>
           </div>
-
-          {/* Call to Action */}
-          <div className="bg-secondary text-white p-5 rounded mb-5">
-            <div className="container">
-              <div className="row align-items-center">
-                {/* Left: Text */}
-                <div className="col-md-8 text-center text-md-start mb-3 mb-md-0">
-                  <h3 className="mb-3">
-                    Would you like to place a purchase order with us?
-                  </h3>
-                  <p className="mb-0">
-                    We strive to stay in communication with our clients. Have a
-                    question about our business, or want to see if we match your
-                    specific needs? Send us a message, or give us a call.
-                  </p>
-                </div>
-
-                {/* Right: Button */}
-                <div className="col-md-4 text-center text-md-end">
-                  <a
-                    href="tel:+9195555 41415"
-                    className="btn btn-light fw-bold px-4 py-2"
-                  >
-                    +91-95555 41415
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="container py-4">
-            <div className="row justify-content-center align-items-center">
-              {/* Left: Follow Us text */}
-              <div className="col-md-3 text-center text-md-start mb-3 mb-md-0">
-                <h4
-                  className="text-dark mb-0 cursive-text"
-                >
-                  Follow Us
-                </h4>
-              </div>
-
-              {/* Right: Social icons */}
-              <div className="col-md-3 d-flex justify-content-center justify-content-md-start">
-                <div className="d-flex gap-3 fs-4">
-                  <a href="#" className="social-icon facebook">
-                    <FaFacebook />
-                  </a>
-                  <a href="#" className="social-icon twitter">
-                    <FaTwitter />
-                  </a>
-                  <a href="#" className="social-icon linkedin">
-                    <FaLinkedin />
-                  </a>
-                  <a href="#" className="social-icon whatsapp">
-                    <FaWhatsapp />
-                  </a>
-                  <a href="#" className="social-icon youtube">
-                    <FaYoutube />
-                  </a>
-                  <a href="#" className="social-icon instagram">
-                    <FaInstagram />
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Video & Map */}
-          <div className="row g-4 py-4">
-            <div className="col-md-6">
-              <div className="ratio ratio-16x9">
-                <iframe
-                  src="https://www.youtube.com/embed/U-M1oep7kjI"
-                  title="Company Video"
-                  allowFullScreen
-                ></iframe>
-              </div>
-            </div>
-            <div className="col-md-6">
-              <div className="ratio ratio-16x9">
-                <MapComponent />
-              </div>
-            </div>
-          </div>
         </div>
       </section>
+      {/* Call to Action */}
+      <CTA />
+      {/* social link start */}
+      <SocialSection />
+      {/* Video & Map */}
+   <section className="section-light">
+  <div className="container">
+    <div className="row g-4 justify-content-center">
+      
+      {/* Video */}
+      <div className="col-12 col-md-6">
+        <div className="ratio ratio-16x9">
+          <iframe
+            src="https://www.youtube.com/embed/U-M1oep7kjI"
+            title="Company Video"
+            allowFullScreen
+          ></iframe>
+        </div>
+      </div>
+
+      {/* Map */}
+      <div className="col-12 col-md-6">
+        <div className="ratio ratio-16x9">
+          <MapComponent />
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
     </>
   );
 }

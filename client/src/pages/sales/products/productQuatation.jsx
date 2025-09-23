@@ -13,7 +13,8 @@ export default function ProductQuatation() {
     { id: "RX-M102", img: "/productimg/roto-seal-twist-type-meter-seal.webp" },
     { id: "RX-PB101", img: "/productimg/cable-seal.jpg" },
     { id: "RX-PD102", img: "/productimg/plastic-seal.jpg" },
-    { id: "RX-PD102", img: "/productimg/plastic-seal.jpg" },
+    { id: "RX-PD103", img: "/productimg/plastic-seal.jpg" },
+    { id: "RX-PD104", img: "/productimg/plastic-seal.jpg" },
   ];
 
   const [selected, setSelected] = useState(null);
@@ -91,7 +92,12 @@ export default function ProductQuatation() {
                   onClick={() => handleSelect(p.id)}
                   style={{ cursor: "pointer" }}
                 >
-                  <img src={p.img} alt={p.id} className="img-fluid mb-2" />
+                  <img
+                    src={p.img}
+                    alt={p.id}
+                    className="img-fluid mb-2"
+                    style={{ width: "120px", height: "120px" }}
+                  />
                   <p className="small fw-bold">{p.id}</p>
 
                   {selected === p.id && (
@@ -107,8 +113,8 @@ export default function ProductQuatation() {
         </div>
 
         {/* Form */}
-        <div className="container py-3">
-          <div className="row">
+        <div className="container d-flex justify-content-center align-items-center min-vh-100">
+          <div className="row w-100 justify-content-center ">
             <div className="col-md-9">
               <form
                 className="shadow p-4 rounded bg-white"
@@ -178,19 +184,19 @@ export default function ProductQuatation() {
                     Email ID <span className="starcolor">*</span>
                   </label>
                   <input type="email" name="email" className="form-control" />
-                  <span>
-                    PLEASE TYPE YOUR DOMAIN EMAIL ID TO GET REQUIRED
-                    INFORMATION OR TO AVOID SPAM / JUNK EMAIL.
+                  <span  className="small text-muted">
+                    PLEASE TYPE YOUR DOMAIN EMAIL ID TO GET REQUIRED INFORMATION
+                    OR TO AVOID SPAM / JUNK EMAIL.
                   </span>
                 </div>
-
-                <button
-                  type="submit"
-                  className="btn btn-primary align-items-center"
-                >
-                  Submit
-                </button>
-
+                <div className="d-flex justify-content-center">
+                  <button
+                    type="submit"
+                    className="btn btn-primary"
+                  >
+                    Submit
+                  </button>
+                </div>
                 {message && <p className="mt-3 text-center">{message}</p>}
               </form>
             </div>
