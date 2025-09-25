@@ -1,46 +1,117 @@
-
-
-/* new css  */
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 .navbar-custom {
-  background-color: #2134C1; /* dark blue from logo */
+  background-color: #1d1f23; /* dark blue from logo */
 }
 
-.logoImage{
- background-color: #e4e5ef;
- 
-}
-.navbar-custom .navbar-brand img {
-  filter: brightness(100%);
+
+.header-container {
+  width: 100%;
+  background-color: #1a1a1a;
+  color: rgb(235, 226, 226);
+  padding: 10px 20px;
+  box-shadow: 0 1px 4px rgba(224, 219, 219, 0.2);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  opacity: 1;
 }
 
-.navbar-custom .navbar-brand,
-.navbar-custom .nav-link,
-.navbar-custom .navbar-toggler-icon {
-  color: #ffffff; /* white text */
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.navbar-nav li a {
+  color: rgb(165, 160, 160); /* or any color you want */
+  text-decoration: none;
+}
+.navbar-nav li a:hover {
+  color: #f3f1ec; /* highlight color on hover */
 }
 
-.navbar-custom .nav-link {
-  transition: color 0.3s ease;
+.navbar-nav .nav-link.active {
+  color: #ffd333;
+  border-bottom: 2px solid #ffd333; /* or any visual indicator */
+}
+.logo img {
+  width: 50px;
 }
 
-.navbar-custom .nav-link:hover,
-.navbar-custom .nav-link:focus {
-  color: #FFD600; /* bright accent yellow on hover */
+.nav-bar {
+  display: flex;
+  gap: 20px;
+  align-items: center;
 }
 
-.navbar-custom .btn-primary {
-  background-color: #FFD600; /* accent yellow */
+.nav-bar a,
+.dropdown-toggle {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  cursor: pointer;
+  position: relative;
+}
+
+.dropdown {
+  position: relative;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #2a2a2a;
+  border: 1px solid #444;
+  padding: 10px 0;
+  z-index: 999;
+  min-width: 150px;
+}
+
+.dropdown-menu a {
+  display: block;
+  padding: 10px 20px;
+  color: hsl(0, 3%, 68%);
+  text-decoration: none;
+}
+
+.dropdown-menu a:hover {
+  background-color: #b1acac;
+}
+
+.header-actions {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.search-input {
+  padding: 6px 10px;
   border: none;
-  color: #2134C1; /* dark blue text */
-  font-weight: 600;
-  transition: background-color 0.3s ease;
+  border-radius: 4px;
+  outline: none;
+  font-size: 14px;
 }
 
-.navbar-custom .btn-primary:hover,
-.navbar-custom .btn-primary:focus {
-  background-color: #E6B800; /* darker yellow */
-  color: #2134C1;
+.request-quote {
+  background-color: #007bff;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: bold;
 }
+
+.request-quote:hover {
+  background-color: #0056b3;
+}
+
 /* WhatsApp icon desktop inside navbar */
 .whatsapp-desktop {
   color: #25d366;
@@ -80,4 +151,101 @@
 .whatsappicon{
    font-size: 28px;
    color: #fff;
+}
+
+/* Remove Bootstrap’s default background image */
+.navbar-toggler-icon {
+  background-image: none !important;
+}
+
+/* Custom bars */
+.navbar-toggler .toggler-icon {
+  display: block;
+  width: 25px;
+  height: 3px;
+  background-color: #535350; /* yellow */
+  margin: 5px 0;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+/* Animate to X when menu is open */
+.navbar-toggler.collapsed .toggler-icon:nth-child(1) {
+  transform: rotate(0) translate(0, 0);
+}
+.navbar-toggler.collapsed .toggler-icon:nth-child(2) {
+  opacity: 1;
+}
+.navbar-toggler.collapsed .toggler-icon:nth-child(3) {
+  transform: rotate(0) translate(0, 0);
+}
+
+.navbar-toggler:not(.collapsed) .toggler-icon:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+.navbar-toggler:not(.collapsed) .toggler-icon:nth-child(2) {
+  opacity: 0;
+}
+.navbar-toggler:not(.collapsed) .toggler-icon:nth-child(3) {
+  transform: rotate(-45deg) translate(6px, -6px);
+}
+
+
+/* Mobile responsive header adjustments */
+@media (max-width: 767px) {
+  .header-flex {
+    flex-direction: column;
+    gap: 0.8rem;
+    align-items: center;
+  }
+  .header-left, .header-center, .header-right {
+    width: 100%;
+    justify-content: center;
+  }
+  .nav-bar {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .nav-link {
+    font-size: 1rem !important;
+    padding: 0.5rem 1rem !important;
+  }
+  .search-input {
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+  .request-quote {
+    width: 90%;
+    max-width: 320px;
+    margin: 0 auto;
+    display: block;
+    padding: 0.75rem 0;
+    font-size: 1.1rem;
+  }
+  .logoImage {
+    height: 40px;
+  }
+  .dropdown-menu {
+    position: static !important;
+    box-shadow: none;
+    border: none;
+    border-radius: 0;
+    background-color: #fff;
+    display: none;
+    flex-direction: column;
+    padding-left: 0;
+  }
+  .dropdown-menu.show {
+    display: flex;
+  }
+  .dropdown-item {
+    padding: 0.75rem 1rem;
+    color: var(--blue);
+    border-bottom: 1px solid #ddd;
+  }
+  .dropdown-item:hover,
+  .dropdown-item:focus {
+    background-color: var(--blue);
+    color: white;
+  }
 }

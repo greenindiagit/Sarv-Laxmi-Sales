@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Container, Row, Col, Form, Button, Card } from 'react-bootstrap';
+import "../../../../index.css"
 
 // Dummy products (use real images or paths)
 const products = [

@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { FaWhatsapp } from "react-icons/fa";
 import logo from "/logo/logo.webp";
-
 import "./header.css";
 
 export default function header() {
@@ -19,20 +18,17 @@ export default function header() {
     </div>
 
     {/* Hamburger Toggle */}
-    <button
-      className="navbar-toggler"
-      type="button"
-      data-bs-toggle="collapse"
-      data-bs-target="#navbarNavDropdown"
-      aria-controls="navbarNavDropdown"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
-      <span className="navbar-toggler-icon"></span>
-    </button>
+    
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+     data-bs-target="#navbarNav">
+  <span class="toggler-icon"></span>
+  <span class="toggler-icon"></span>
+  <span class="toggler-icon"></span>
+</button>
 
     {/* Navbar links */}
-    <div className="collapse navbar-collapse" id="navbarNavDropdown">
+    <div className="collapse navbar-collapse" id="navbarNav">
       <ul className="navbar-nav ms-auto align-items-center gap-2 gap-md-3">
         <li className="nav-item">
           <Link className="nav-link" to="/">Home</Link>
@@ -87,7 +83,7 @@ export default function header() {
             <FaWhatsapp className="whatsappicon" />
           </a>
         </li>
-      </ul>
+      </ul> 
     </div>
   </div>
 </nav>

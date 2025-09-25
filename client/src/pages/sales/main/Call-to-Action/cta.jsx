@@ -6,8 +6,8 @@ function CTA() {
   const navigate = useNavigate();
 
   return (
-    <section className="cta-section rounded-4 shadow-lg p-5 ">
       <div className="container">
+         <div className="cta-section">
         <div className="row align-items-center">
           {/* Left Column - 9 parts */}
           <div className="col-lg-9 text-center text-lg-start cta-left">
@@ -42,7 +42,7 @@ function CTA() {
           </div>
         </div>
       </div>
-    </section>
+      </div>
   );
 }
 

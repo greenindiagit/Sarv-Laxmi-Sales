@@ -1,8 +1,9 @@
 .cta-section {
-  background-color:#2134C1; /* Light green background */
-  color: #FFFFFF;          /* Text color */
-  padding: 2rem;
-  gap: 1.5rem;
+  background-color: #716969; /* Light background */
+  padding: 3rem 1rem; /* Spacing around the section */
+  color: #333; 
+  border-style: none;
+   border-radius: 20px;
 }
 
 .cta-left h2 {

@@ -56,7 +56,6 @@ function HomePageProduct() {
   const navigate = useNavigate();
 
   return (
-    <section className="section-light">
       <div className="container">
         <p className="text-muted mb-5">
           Founded in 2018, Sarv Laxmi Sales Corporation is a leading
@@ -85,9 +84,9 @@ function HomePageProduct() {
                     >
                       <FaEye />
                     </button>
-                    <button className="btn-overlay btn-cart">
+                    {/* <button className="btn-overlay btn-cart">
                       <FaShoppingCart />
-                    </button>
+                    </button> */}
                   </div>
                   {/* Optional badge */}
                 </div>
@@ -127,7 +126,6 @@ function HomePageProduct() {
           ))}
         </div>
       </div>
-    </section>
   );
 }
 

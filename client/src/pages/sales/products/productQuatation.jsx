@@ -68,10 +68,10 @@ export default function ProductQuatation() {
   };
 
   return (
-    <div className="container align-content-center align-items-center w-75 py-3">
+    <div className="container px-2 px-sm-3 py-3">
       <section className="p-3 thick-border ">
         <div className="text-center mb-4">
-          <button className="btn-md w-50 align-items-center justify-content-center btn-arrow">
+          <button className="btn-arrow">
             QUOTE REQUEST - OFFLINE BULK ORDER
             <FaArrowRightArrowLeft className="ms-2" />
           </button>
@@ -79,12 +79,12 @@ export default function ProductQuatation() {
 
         {/* Product Grid */}
         <div className="container mb-4">
-          <label className="fw-bold mb-3">
+          <label className="fw-bold col-12 col-md-6 col-md-3 mb-3">
             SELECT THE SEAL <span className="starcolor">*</span>
           </label>
           <div className="row">
             {products.map((p, index) => (
-              <div className="col-6 col-md-3 mb-4" key={index}>
+              <div className="col-6 col-sm-4 col-md-3 mb-4" key={index}>
                 <div
                   className={`border rounded p-2 shadow-sm position-relative ${
                     selected === p.id ? "border-success shadow-lg" : ""
@@ -92,13 +92,8 @@ export default function ProductQuatation() {
                   onClick={() => handleSelect(p.id)}
                   style={{ cursor: "pointer" }}
                 >
-                  <img
-                    src={p.img}
-                    alt={p.id}
-                    className="img-fluid mb-2"
-                    style={{ width: "120px", height: "120px" }}
-                  />
-                  <p className="small fw-bold">{p.id}</p>
+                  <img src={p.img} alt={p.id} className="img-fluid  " />
+                  <p className="ssmall fw-bold text-center">{p.id}</p>
 
                   {selected === p.id && (
                     <FaCheckCircle
@@ -110,94 +105,109 @@ export default function ProductQuatation() {
               </div>
             ))}
           </div>
-        </div>
-
-        {/* Form */}
-        <div className="container d-flex justify-content-center align-items-center min-vh-100">
-          <div className="row w-100 justify-content-center ">
-            <div className="col-md-9">
+          <div className="row justify-content-center">
+            <div className="col-12 col-md-10">
               <form
                 className="shadow p-4 rounded bg-white"
                 onSubmit={handleSubmit}
               >
-                <div className="mb-3">
-                  <label className="form-label">
-                    Quantity Range<span className="starcolor">*</span>
-                  </label>
-                  <select name="quantity" className="form-select" required>
-                    <option value="">Select Quantity</option>
-                    <option value="100-500">100 - 500</option>
-                    <option value="500-1000">500 - 1000</option>
-                    <option value="1000+">1000+</option>
-                  </select>
-                </div>
+                <div className="row">
+                  <div className="col-12 col-md-6 mb-3">
+                    <label className="form-label">
+                      Quantity Range <span className="starcolor">*</span>
+                    </label>
+                    <select name="quantity" className="form-select" required>
+                      <option value="">Select Quantity</option>
+                      <option value="100-500">100 - 500</option>
+                      <option value="500-1000">500 - 1000</option>
+                      <option value="1000+">1000+</option>
+                    </select>
+                  </div>
 
-                <div className="mb-3">
-                  <label className="form-label">Seal Colour</label>
-                  <select name="colour" className="form-select">
-                    <option value="">Select Colour</option>
-                    <option value="Red">Red</option>
-                    <option value="Blue">Blue</option>
-                    <option value="Yellow">Yellow</option>
-                  </select>
-                </div>
+                  <div className="col-12 col-md-6 mb-3">
+                    <label className="form-label">Seal Colour</label>
+                    <select name="colour" className="form-select">
+                      <option value="">Select Colour</option>
+                      <option value="Red">Red</option>
+                      <option value="Blue">Blue</option>
+                      <option value="Yellow">Yellow</option>
+                    </select>
+                  </div>
 
-                <div className="mb-3">
-                  <label className="form-label">
-                    Customization / Printing?
-                  </label>
-                  <input
-                    type="text"
-                    name="customization"
-                    className="form-control"
-                    placeholder="Enter details"
-                  />
-                </div>
+                  <div className="col-12 col-md-6 mb-3">
+                    <label className="form-label">
+                      Customization / Printing?
+                    </label>
+                    <input
+                      type="text"
+                      name="customization"
+                      className="form-control"
+                      placeholder="Enter details"
+                    />
+                  </div>
 
-                <div className="mb-3">
-                  <label className="form-label">Delivery Location</label>
-                  <input type="text" name="location" className="form-control" />
-                </div>
+                  <div className="col-12 col-md-6 mb-3">
+                    <label className="form-label">Delivery Location</label>
+                    <input
+                      type="text"
+                      name="location"
+                      className="form-control"
+                    />
+                  </div>
 
-                <div className="mb-3">
-                  <label className="form-label">Name</label>
-                  <input type="text" name="name" className="form-control" />
-                </div>
+                  <div className="col-12 col-md-6 mb-3">
+                    <label className="form-label">Name</label>
+                    <input type="text" name="name" className="form-control" />
+                  </div>
 
-                <div className="mb-3">
-                  <label className="form-label">Company Name</label>
-                  <input type="text" name="company" className="form-control" />
-                </div>
+                  <div className="col-12 col-md-6 mb-3">
+                    <label className="form-label">Company Name</label>
+                    <input
+                      type="text"
+                      name="company"
+                      className="form-control"
+                    />
+                  </div>
 
-                <div className="mb-3">
-                  <label className="form-label">Mobile Number</label>
-                  <input type="tel" name="mobile" className="form-control" />
-                </div>
+                  <div className="col-12 col-md-6 mb-3">
+                    <label className="form-label">Mobile Number</label>
+                    <input type="tel" name="mobile" className="form-control" />
+                  </div>
 
-                <div className="mb-3">
-                  <label className="form-label">WhatsApp Number</label>
-                  <input type="tel" name="whatsapp" className="form-control" />
-                </div>
+                  <div className="col-12 col-md-6 mb-3">
+                    <label className="form-label">WhatsApp Number</label>
+                    <input
+                      type="tel"
+                      name="whatsapp"
+                      className="form-control"
+                    />
+                  </div>
 
-                <div className="mb-3">
-                  <label className="form-label">
-                    Email ID <span className="starcolor">*</span>
-                  </label>
-                  <input type="email" name="email" className="form-control" />
-                  <span  className="small text-muted">
-                    PLEASE TYPE YOUR DOMAIN EMAIL ID TO GET REQUIRED INFORMATION
-                    OR TO AVOID SPAM / JUNK EMAIL.
-                  </span>
+                  <div className="col-12 col-md-6 mb-3">
+                    <label className="form-label">
+                      Email ID <span className="starcolor">*</span>
+                    </label>
+                    <input type="email" name="email" className="form-control" />
+                    <span className="small text-muted">
+                      PLEASE TYPE YOUR DOMAIN EMAIL ID TO GET REQUIRED
+                      INFORMATION OR TO AVOID SPAM / JUNK EMAIL.
+                    </span>
+                  </div>
+
+                  <div className="col-12 text-center mt-3">
+                    <button type="submit" className="btn btn-primary">
+                      Submit
+                    </button>
+                  </div>
+
+                  {message && (
+                    <div className="col-12">
+                      <p className="text-center mt-3 fw-bold text-danger">
+                        {message}
+                      </p>
+                    </div>
+                  )}
                 </div>
-                <div className="d-flex justify-content-center">
-                  <button
-                    type="submit"
-                    className="btn btn-primary"
-                  >
-                    Submit
-                  </button>
-                </div>
-                {message && <p className="mt-3 text-center">{message}</p>}
               </form>
             </div>
           </div>
