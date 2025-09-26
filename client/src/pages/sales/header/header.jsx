@@ -8,7 +8,7 @@ export default function header() {
   return (
     <>
       {/* Bootstrap Navbar */}
-    <nav className="navbar navbar-expand-md navbar-custom py-3 shadow-sm">
+ <nav className="navbar navbar-expand-lg header-container">
   <div className="container">
     {/* Brand Section (Logo + Name stacked) */}
     <div className="d-flex flex-column">
@@ -68,7 +68,7 @@ export default function header() {
 
         {/* Quote button */}
         <li className="nav-item">
-           <Link className="btn btn-primary ms-2" to="/quate">Request Quote</Link>
+           <Link className="request-quote ms-2" to="/quate">Request Quote</Link>
           {/* <button className="btn btn-primary ms-2">Request Quote</button> */}
         </li>
 
@@ -78,7 +78,7 @@ export default function header() {
             href="https://wa.me/919555541415"
             target="_blank"
             rel="noopener noreferrer"
-            className="nav-link whatsapp-desktop"
+            className="nav-link whatsapp-desktop "
           >
             <FaWhatsapp className="whatsappicon" />
           </a>

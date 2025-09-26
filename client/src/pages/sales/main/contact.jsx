@@ -3,7 +3,7 @@ import axiosInstance from "../../../api/axiosInstance";
 import API_PATHS from "../../../api/apiUrl";
 import { validateContactForm } from "../../../utils/formValidators"; // 🔥 import
 import "./contact.css";
-import "../../../index.css";
+// import "../../../index.css";
 
 function Contact() {
   const [formData, setFormData] = useState({

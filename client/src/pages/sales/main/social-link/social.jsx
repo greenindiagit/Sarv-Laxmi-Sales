@@ -10,16 +10,17 @@ import "./social.css"
 
 function SocialSection() {
   return (
-        <div className="row justify-content-center align-items-center p-3">
+    <section className="section-light">
+        <div className="row follow-us-section">
           {/* Left: Follow Us text */}
-          <div className="col-md-3 text-center text-md-start mb-3 mb-md-0">
+          <div className="col-md-6">
            <h2 className="follow-us-title">Follow Us</h2>
 
           </div>
 
           {/* Right: Social icons */}
-          <div className="col-md-6 d-flex justify-content-center justify-content-md-start">
-            <div className="d-flex gap-3 fs-4 flex-wrap">
+          <div className="social-icons-container col-md-6">
+            <div className="d-flex gap-3 fs-4 flex-wrap ">
               <a href="#" className="social-icon facebook">
                 <FaFacebook />
               </a>
@@ -41,6 +42,7 @@ function SocialSection() {
             </div>
           </div>
         </div>
+        </section>
   );
 }
 export default SocialSection;

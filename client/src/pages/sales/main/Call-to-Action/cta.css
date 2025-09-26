@@ -1,9 +1,9 @@
 .cta-section {
-  background-color: #716969; /* Light background */
-  padding: 3rem 1rem; /* Spacing around the section */
+  background-color: #fff; /* Light background */
+  padding: 1rem 1rem; /* Spacing around the section */
   color: #333; 
   border-style: none;
-   border-radius: 20px;
+  border-radius: 20px;
 }
 
 .cta-left h2 {
@@ -30,30 +30,30 @@
 
 /* Phone button */
 .cta-btn-phone {
-  background-color: #d87676;
+  background-color: #e6bb00;
   color: #0D1B2A;
-  border: 2px solid #dabebe;
+  border: 2px solid #e6bb00;
 }
 
 .cta-btn-phone:hover {
-  background-color: #2134C1; /* darker green hover */
+  background-color: #e6bb00; /* darker green hover */
   color: #ffffff;
 }
 
 /* Order button */
 .cta-btn-order {
-  background-color:#d87676; /* Amber color */
+  background-color:#e6bb00; /* Amber color */
   color: #0D1B2A;
-  border: 2px solid  #dabebe;
+  border: 2px solid #e6bb00;
 }
 
 .cta-btn-order:hover {
-  background-color: #2134C1; /* darker amber */
+  background-color: #e6bb00; /* darker amber */
   color:#ffffff;
 }
 
 /* Responsive adjustments */
-@media (max-width: 992px) {
+@media (min-width: 576px) and (max-width: 991px) {
   .cta-section {
     flex-direction: column;
     text-align: center;
@@ -66,16 +66,15 @@
   .cta-right {
     width: 100%;
   }
-}
-
-@media (max-width: 576px) {
-  .cta-left h2 {
+    .cta-left h2 {
     font-size: 1.5rem;
   }
 
-  .cta-btn-phone,
+  .cta-btn-phone{
+    font-size: 9px;
+  }
   .cta-btn-order {
-    font-size: 1rem;
-    padding: 0.65rem 1rem;
+    font-size: 12px;
   }
 }
+

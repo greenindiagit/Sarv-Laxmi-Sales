@@ -57,7 +57,7 @@ body {
 /* main class */
 .section-light {
   background-color: #ebedef;
-  padding: 3rem 1rem; 
+  padding: 1rem 0; 
   color: #333; 
 }
 
@@ -107,91 +107,8 @@ body {
 /* header css  start*/
 /* header css end  */
 /* footer css start */
-.main-footer {
-  position: relative;
-  background: url("../img/indiamap.webp") no-repeat center;
-  background-color: var(--gray-dark);
-  background-size: 240px;
-  color: rgba(255, 255, 255, 0.8);
-}
-.main-footer a {
-  margin-bottom: 0.75rem;
-}
-.main-footer .btn {
-  font-size: 0.75rem;
-  padding: 6px;
-  width: 28px;
-  border: 0;
-}
-.main-footer a,
-.main-footer .copyright {
-  font-size: 0.7rem;
-  color: rgba(255, 255, 255, 0.5);
-}
-.section-footer {
-  background: #000;
-  color: var(--footer-text-color);
-}
-.section-footer p {
-  border-color: rgba(256, 256, 256, 0.1) !important;
-}
-footer {
-  background-color: var(--footer-bg-dark);
-  color: var(--footer-text-light);
-  padding-top: 3rem;
-  padding-bottom: 1.5rem;
-  font-size: 0.9rem;
-}
-footer h5 {
-  color: var(--footer-text-light);
-  margin-bottom: 1rem;
-  font-weight: 600;
-  text-transform: uppercase;
-}
-footer a {
-  color: var(--footer-text-light);
-  text-decoration: none;
-  transition: color 0.3s ease;
-}
-footer a:hover,
-footer a:focus {
-  color: var(--footer-link-hover);
-  text-decoration: underline;
-}
-footer ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-footer ul li {
-  margin-bottom: 0.6rem;
-  color: var(--footer-text-light);
-  display: flex;
-  align-items: center;
-}
-footer ul li svg,
-footer p svg {
-  margin-right: 0.5rem;
-  color: var(--footer-text-light);
-}
-footer p.small,
-footer p.fw-bold {
-  color: var(--footer-text-light);
-  font-weight: 300;
-}
-footer .bg-secondary {
-  background-color: var(--footer-bg-gray) !important;
-  padding: 1rem 0;
-  font-size: 0.8rem;
-  text-align: center;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-}
-footer .btn-primary {
-  background-color: var(--logo-dark-blue);
-  border-color: var(--logo-dark-blue);
-  box-shadow: 0 3px 6px rgba(33, 52, 193, 0.4);
-  color: #fff;
-}
+
+
 /* footer css end  */
 /* about banner section start */
 
@@ -250,20 +167,19 @@ footer .btn-primary {
 .banner {
   position: relative;
   width: 100%;
-  min-height: 450px; /* ya jitni chahe utni height */
+  min-height: 370px; /* ya jitni chahe utni height */
   overflow: hidden;
-  top: 5px;
 }
 
 .banner-img {
   filter: brightness(0.99);
   width: 100%;
-  height: 300px;
+  height: 370px;
   object-fit: cover;
   vertical-align: middle;
   border-style: none;
   max-width: 100%;
-  border-radius: 150px; /* Half of the height = full horizontal round */
+  border-radius: 20px; /* Half of the height = full horizontal round */
 }
 .banner-overlay {
   position: absolute;
@@ -272,7 +188,7 @@ footer .btn-primary {
   width: 100%;
   height: calc(100% - 0px); /* ya '100%' agar overlay pure parent pe chahiye */
   z-index: 2;
-  background: rgba(33, 52, 193, 0.7); /* Blue overlay, 0.7 opacity */
+  background: rgba(230, 187, 0, 0.3); /* Blue overlay, 0.7 opacity */
   color: #fff;
   display: flex;
   flex-direction: column;
@@ -502,18 +418,8 @@ footer .btn-primary {
 }
 
 /* Tablets (768px - 991px) */
-@media (min-width: 768px) and (max-width: 991px) {
-  footer {
-    font-size: 0.85rem;
-  }
-
-  footer ul li {
-    font-size: 0.9rem;
-  }
-
-  .main-footer {
-    background-size: 200px;
-  }
+@media (min-width: 576px) and (max-width: 991px) {
+ 
   .product-card {
     margin-bottom: 1rem;
   }
@@ -541,30 +447,31 @@ footer .btn-primary {
     width: 100%;
     padding: 0.75rem;
   }
-}
-
-/* Mobile-specific tweaks */
-@media (max-width: 576px) {
-  .banner {
+   .banner {
     min-height: 200px;
+  }
+   .banner-img {
+    max-height: 200px;
   }
   .banner-overlay {
     padding: 0.5rem;
   }
-  .banner-overlay h2 {
-    font-size: 0.7rem;
-    line-height: 1.3;
-  }
+.banner-overlay h2 {
+  font-size: clamp(1rem, 4vw, 2rem); /* min 1rem, scale with screen, max 2rem */
+  line-height: 1.2;
+}
 
-  .banner-overlay h3 {
-    font-size: 0.8rem;
-  }
+.banner-overlay h3 {
+  font-size: clamp(0.9rem, 3.5vw, 1.5rem); /* min 0.9rem, max 1.5rem */
+  margin-top: 0.3rem;
+}
 
-  .banner-subtext {
-    font-size: 0.7rem;
-    padding: 0.2rem 0.6rem;
-    margin-bottom: 0.5rem;
-  }
+.banner-subtext {
+  font-size: clamp(0.75rem, 2.5vw, 1rem); /* scales smoothly */
+  padding: 0.2rem 0.6rem;
+  margin-bottom: 0.3rem;
+  line-height: 1.3;
+}
   .thick-border {
     padding: 10px !important;
     border-radius: 20px;
@@ -603,3 +510,5 @@ footer .btn-primary {
     width: 100%; /* full-width submit button */
   }
 }
+
+

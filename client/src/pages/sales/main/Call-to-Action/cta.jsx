@@ -6,6 +6,7 @@ function CTA() {
   const navigate = useNavigate();
 
   return (
+    <section className="section-light">
       <div className="container">
          <div className="cta-section">
         <div className="row align-items-center">
@@ -28,21 +29,22 @@ function CTA() {
           <div className="col-lg-3 d-flex flex-column gap-3 cta-right text-center">
             <a
               href="tel:+919555541415"
-              className="cta-btn-phone fw-bold"
+              className="cta-btn-phone"
             >
-              📞 +91-9555541415
+              +91-9555541415
             </a>
             <button
               type="button"
-              className="cta-btn-order fw-bold"
+              className="cta-btn-order"
               onClick={() => navigate("/quote")}
             >
-              🚀 ORDER NOW
+               ORDER NOW
             </button>
           </div>
         </div>
       </div>
       </div>
+      </section>
   );
 }
 

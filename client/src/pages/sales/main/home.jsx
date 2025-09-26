@@ -14,7 +14,7 @@ export default function Home() {
           <img
             src={banner}
             alt="Transport"
-            className="img-fluid w-100  banner-img"
+            className="banner-img"
           />
           <div className="banner-overlay">
             <h2 className="fw-bold fs-4 fs-md-2">

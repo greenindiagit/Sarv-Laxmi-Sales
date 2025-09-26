@@ -1,27 +1,49 @@
+/* =========================
+   Enquiry Form Styles
+========================= */
+
+/* Top bar */
 .form-top-bar {
   border-top: 4px solid #f5a623;
   margin-bottom: 1.5rem;
 }
+
+/* Form container */
 .enquiry-form-container {
-  width: 380px;
+  width: 100%;
+  max-width: 380px;
   margin: 40px auto;
   background: #fff;
   padding: 0 24px 24px 24px;
   box-sizing: border-box;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
 }
-.enquiry-form-label {
-  text-align: left;
-  font-size: 16px;
-  color: #444;
-  min-width: 105px;
-  display: inline-block;
+
+/* Form title */
+.contact-title {
+  text-align: center;
+  margin-bottom: 1rem;
+  color: #333;
+  font-weight: bold;
+  font-size: clamp(1.2rem, 5vw, 2rem);
 }
+
+/* Form row: label + input/textarea */
 .enquiry-form-row {
   display: flex;
-  align-items: flex-start;
+  flex-direction: column; /* stack labels on mobile */
   margin-bottom: 14px;
-  gap: 8px;
+  gap: 6px;
 }
+
+/* Labels */
+.enquiry-form-label {
+  font-size: 16px;
+  color: #444;
+}
+
+/* Inputs & Textarea */
 .enquiry-form-input,
 .enquiry-form-textarea {
   width: 100%;
@@ -29,54 +51,56 @@
   border: 1px solid #ececec;
   border-radius: 6px;
   background: #fafafa;
-  padding: 6px 10px;
-  transition: border 0.2s;
+  padding: 8px 10px;
+  transition: border 0.2s, box-shadow 0.2s;
 }
+
 .enquiry-form-input:focus,
 .enquiry-form-textarea:focus {
   border: 1.5px solid #f5a623;
   background: #fff;
   outline: none;
+  box-shadow: 0 0 5px rgba(245,166,35,0.3);
 }
+
+/* Small helper text */
 .enquiry-form-small {
   color: #a87a14;
   font-size: 13px;
-  display: block;
-  margin-left: 113px;
-  margin-bottom: 6px;
-  margin-top: -10px;
+  margin-top: 2px;
 }
+
+/* Submit button */
 .enquiry-form-btn {
-  width: 100px;
+  width: 100%;
+  max-width: 180px;
   margin: 24px auto 0 auto;
   display: block;
-  padding: 7px 0;
+  padding: 10px 0;
   font-size: 18px;
   font-weight: 500;
   background-color: #f5a623;
   color: #fff;
   border: none;
   border-radius: 5px;
-  transition: background 0.2s;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
 }
+
 .enquiry-form-btn:hover,
 .enquiry-form-btn:focus {
   background-color: #ffc14a;
   color: #222;
 }
-.contact-title {
-  text-align: center;
-  margin-bottom: 1rem;
-  color: #333;
-  font-weight: bold;
-}
 
+/* Feedback messages */
 .feedback-message {
   text-align: center;
   margin-top: 1rem;
   font-weight: 500;
 }
 
+/* Error styles */
 .error {
   border: 1px solid red !important;
 }
@@ -85,4 +109,22 @@
   color: red;
   font-size: 0.85rem;
   margin-top: 4px;
+}
+
+/* =========================
+   Responsive Adjustments
+========================= */
+@media (min-width: 576px) {
+  .enquiry-form-row {
+    flex-direction: row; /* side-by-side label + input on larger screens */
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .enquiry-form-label {
+    min-width: 105px;
+    text-align: left;
+  }
+  .enquiry-form-small {
+    margin-left: 113px;
+  }
 }
