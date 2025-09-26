@@ -78,7 +78,7 @@ export default function header() {
             href="https://wa.me/919555541415"
             target="_blank"
             rel="noopener noreferrer"
-            className="nav-link whatsapp-desktop "
+            className="nav-link whatsapp-desktop"
           >
             <FaWhatsapp className="whatsappicon" />
           </a>

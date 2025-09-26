@@ -36,7 +36,6 @@
 .navbar-nav .nav-link.show {
   color: #ffd333 !important;
   border-bottom: 2px solid #ffd333;
- 
 }
 .logo img {
   width: 50px;
@@ -101,32 +100,31 @@
 
 .whatsapp-desktop:hover {
   transform: scale(1.1);
+  color: #25d366;
 }
 
 /* WhatsApp floating button for mobile */
 .whatsapp-mobile {
   position: fixed;
-  top: 100px;
-  right: 2px;
-  background-color: #25d366;
-  color: white;
-  padding: 12px;
-  border-radius: 50%;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.2);
-  z-index: 9999;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: transform 0.2s, box-shadow 0.2s;
+  top: 66px;
+  right: -5px;
+  color: #25d366;
+  background: transparent; /* keep it transparent */
+  border: none;
+  box-shadow: none;
+  transition: transform 0.2s;
 }
 
 .whatsapp-mobile:hover {
   transform: scale(1.1);
-  box-shadow: 0 6px 10px rgba(0,0,0,0.3);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3);
 }
-.whatsappicon{
-   font-size: 28px;
-   color: #fff;
+
+/* WhatsApp icon inside */
+.whatsappicon {
+  font-size: 48px;
+  color: #25d366;
+  background: none; /* keep WhatsApp green */
 }
 
 /* Remove Bootstrap’s default background image */
@@ -167,27 +165,27 @@
 }
 
 .request-quote {
-    width: 100%;
-    max-width: 320px;
-    margin: 10px auto;
-    display: block;
-    padding: 0.75rem 0;
-    font-size: 1.1rem;
-    text-align: center;
-    background-color: #e6bb00;
-    color: #fff;
-    border-radius: 6px;
-    transition: background 0.2s, transform 0.2s;
-    text-decoration: none;
-  }
+  width: 100%;
+  max-width: 320px;
+  margin: 10px auto;
+  display: block;
+  padding: 0.75rem 0;
+  font-size: 1.1rem;
+  text-align: center;
+  background-color: #f5a623;
+  color: #fff;
+  border-radius: 6px;
+  transition: background 0.2s, transform 0.2s;
+  text-decoration: none;
+}
 
-  /* Hover effect */
-  .request-quote:hover,
-  .request-quote:focus {
-    background-color: #e6bb00;
-    transform: scale(1.02);
-    color: #fff;
-  }
+/* Hover effect */
+.request-quote:hover,
+.request-quote:focus {
+  background-color: #e6bb00;
+  transform: scale(1.02);
+  color: #fff;
+}
 
 /* Mobile responsive header adjustments */
 @media (max-width: 767px) {
@@ -196,7 +194,9 @@
     gap: 0.8rem;
     align-items: center;
   }
-  .header-left, .header-center, .header-right {
+  .header-left,
+  .header-center,
+  .header-right {
     width: 100%;
     justify-content: center;
   }
@@ -212,7 +212,7 @@
     max-width: 100% !important;
     width: 100% !important;
   }
- 
+
   .logoImage {
     height: 40px;
   }
@@ -239,7 +239,7 @@
     background-color: #e6bb00;
     color: white;
   }
-  
+
   /* Make the button full-width and centered */
   .request-quote {
     width: 100%;
@@ -270,33 +270,5 @@
     gap: 10px;
     width: 100%;
     align-items: center;
-  }
-
-  /* Ensure search input fits nicely */
-  .search-input {
-    width: 90%;
-    max-width: 320px;
-    margin: 0 auto;
-    display: block;
-  }
-    .whatsapp-mobile {
-    display: flex; /* show on mobile */
-    position: fixed;
-    bottom: 20px;
-    right: 15px;
-    background-color: #25d366;
-    color: #fff;
-    padding: 12px;
-    border-radius: 50%;
-    z-index: 9999;
-    align-items: center;
-    justify-content: center;
-    font-size: 28px;
-    cursor: pointer;
-    transition: transform 0.2s, box-shadow 0.2s;
-  }
-  .whatsapp-mobile:hover {
-    transform: scale(1.1);
-    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3);
   }
 }

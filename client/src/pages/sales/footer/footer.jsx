@@ -104,7 +104,7 @@ function Footer() {
                   onClick={handleClick}
                   className="icon-chat"
                 >
-                  <FontAwesomeIcon icon={faComment} size="lg" />
+                  <FontAwesomeIcon icon={faComment}  className="custom-comment-icon"  />
                 </button>
 
                 {/* Modal render conditionally but Hooks inside ChatModal must be top-level */}
