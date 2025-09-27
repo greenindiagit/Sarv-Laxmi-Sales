@@ -142,8 +142,7 @@
   border-radius: 2px;
   transition: all 0.3s ease;
 }
-
-/* Animate to X when menu is open */
+/* Menu closed (collapsed) */
 .navbar-toggler.collapsed .toggler-icon:nth-child(1) {
   transform: rotate(0) translate(0, 0);
 }
@@ -154,6 +153,7 @@
   transform: rotate(0) translate(0, 0);
 }
 
+/* Menu open (not collapsed) */
 .navbar-toggler:not(.collapsed) .toggler-icon:nth-child(1) {
   transform: rotate(45deg) translate(5px, 5px);
 }
@@ -161,9 +161,8 @@
   opacity: 0;
 }
 .navbar-toggler:not(.collapsed) .toggler-icon:nth-child(3) {
-  transform: rotate(-45deg) translate(6px, -6px);
+  transform: rotate(-45deg) translate(5px, -5px);
 }
-
 .request-quote {
   width: 100%;
   max-width: 320px;

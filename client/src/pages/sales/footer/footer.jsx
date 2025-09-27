@@ -19,10 +19,10 @@ function Footer() {
   const handleClose = () => setIsChatOpen(false);
   return (
     <>
-      <footer class="main-footer">
-        <div class="container">
-          <div class="row">
-            <div class="col-md-3">
+      <footer className="main-footer">
+        <div className="container">
+          <div className="row">
+            <div className="col-md-3">
               {/* <!-- Address --> */}
               <h5 className="mb-3">Address</h5>
               <p className="small mb-1">
@@ -34,7 +34,7 @@ function Footer() {
                 GST TIN – 07BKWPM4815J1ZJ
               </p>
             </div>
-            <div class="col-md-3">
+            <div className="col-md-3">
               {/* <!-- Sales Phone & Email --> */}
               <h5 className="mb-3">Sales Phone & Email</h5>
               <p className="small mb-1">
@@ -64,7 +64,7 @@ function Footer() {
                 <a href="/contact">Contact Us</a>
               </p>
             </div>
-            <div class="col-md-3">
+            <div className="col-md-3">
               {/* <!-- Payment Options --> */}
               <h5 className="mb-3">Payment Options</h5>
               <ul>
@@ -82,7 +82,7 @@ function Footer() {
                 </li>
               </ul>
             </div>
-            <div class="col-md-3">
+            <div className="col-md-3">
               {/* <!-- Security Seals --> */}
               <h5 className="mb-3">Security Seals</h5>
               <ul>

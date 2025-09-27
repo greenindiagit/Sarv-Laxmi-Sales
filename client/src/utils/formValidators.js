@@ -6,13 +6,6 @@ export const validateContactForm = (formData) => {
   if (!formData.name.trim()) {
     errors.name = "Name is required";
   }
-
-  if (!formData.landingNo.trim()) {
-    errors.landingNo = "Landing No. is required";
-  } else if (!/^0\d+$/.test(formData.landingNo)) {
-    errors.landingNo = "Landing No. must start with 0";
-  }
-
   if (!formData.email.trim()) {
     errors.email = "Email is required";
   } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
@@ -25,9 +18,13 @@ export const validateContactForm = (formData) => {
     errors.mobile = "Contact No. must be 10 digits";
   }
 
-  if (!formData.location.trim()) {
-    errors.location = "Location is required";
+  if (!formData.address.trim()) {
+    errors.address = "Address is required";
   }
-
+   if (!formData.contactMessage.trim()) {
+    errors.contactMessage = "Message is required";
+  }
+  
+   
   return errors;
 };

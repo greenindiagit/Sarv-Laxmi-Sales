@@ -20,13 +20,19 @@ export default function header() {
     {/* Hamburger Toggle */}
     
 
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-     data-bs-target="#navbarNav">
-  <span class="toggler-icon"></span>
-  <span class="toggler-icon"></span>
-  <span class="toggler-icon"></span>
+ <button
+  className="navbar-toggler collapsed"
+  type="button"
+  data-bs-toggle="collapse"
+  data-bs-target="#navbarNav"
+  aria-controls="navbarNav"
+  aria-expanded="false"
+  aria-label="Toggle navigation"
+>
+  <span className="toggler-icon"></span>
+  <span className="toggler-icon"></span>
+  <span className="toggler-icon"></span>
 </button>
-
     {/* Navbar links */}
     <div className="collapse navbar-collapse" id="navbarNav">
       <ul className="navbar-nav ms-auto align-items-center gap-2 gap-md-3">
