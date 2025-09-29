@@ -195,7 +195,7 @@ export default function ProductQuatation() {
                   </div>
 
                   <div className="col-12 text-center mt-3">
-                    <button type="submit" className="btn btn-primary">
+                    <button type="submit" className="quote-form-btn ">
                       Submit
                     </button>
                   </div>

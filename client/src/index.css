@@ -396,7 +396,7 @@ body {
 /* Default desktop styles */
 .btn-arrow {
   color: white;
-  background: hsl(211, 95%, 42%);
+  background: #f5a623;
   border: none;
   font-size: 18px;
   border-radius: 9px;
@@ -415,6 +415,22 @@ body {
 .product-image-grid {
   width: 100%;
   height: 120px;
+}
+
+.quote-form-btn {
+  width: 100%;
+  max-width: 180px;
+  margin: 24px auto 0 auto;
+  display: block;
+  padding: 10px 0;
+  font-size: 18px;
+  font-weight: 500;
+  background-color: #f5a623;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
 }
 
 /* Tablets (768px - 991px) */
