@@ -231,4 +231,33 @@ h3.contact-info-title {
   .checkbox-label {
     font-size: 0.9rem;
   }
+   
+}
+@media (max-width: 768px) {
+  .contact-info-item {
+    display: block;              /* pura block ban jayega */
+    margin-bottom: 18px;
+  }
+
+  .contact-info-item strong {
+    display: block;
+    margin-bottom: 4px;
+    font-size: 0.95rem;
+    color: #333;
+  }
+
+  .contact-info-item p,
+  .contact-info-item a {
+    display: block;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: #555;
+    word-break: break-word;      /* break long words (emails/numbers) */
+    overflow-wrap: anywhere;     /* force wrap */
+  }
+
+  /* links highlight */
+  .contact-info-item a {
+    color: #f5a623;
+  }
 }
