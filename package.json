@@ -2,7 +2,7 @@
   "name": "sarv-laxmi-sales",
   "version": "1.0.0",
   "scripts": {
-    "dev": "concurrently \"npm run dev --prefix client\" \"npm start --prefix server\"",
+    "dev": "concurrently \"npm run dev --prefix server\" \"npm run dev --prefix admin\" \"npm run dev --prefix client\"",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",

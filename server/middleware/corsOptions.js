@@ -1,6 +1,7 @@
 const allowedOrigins = [
-  'http://localhost:5173',
-  'https://sales.greenindiateam.com',
+  "http://localhost:5173",
+  "http://localhost:5174", // add this
+  "https://sales.greenindiateam.com",
 ];
 
 export default {
@@ -8,7 +9,7 @@ export default {
     if (!origin || allowedOrigins.includes(origin)) {
       callback(null, true);
     } else {
-      callback(new Error('Not allowed by CORS'));
+      callback(new Error("Not allowed by CORS"));
     }
   },
   credentials: true,

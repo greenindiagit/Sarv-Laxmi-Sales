@@ -1,54 +1,111 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import axiosInstance from "../../../../api/axiosInstance";
+import API_PATHS from "../../../../api/apiUrl";
 
-const Product = ({ productId }) => {
-  const [product, setProduct] = useState(null);
+// const backend_url = "http://localhost:5000";
+const backend_url = axiosInstance.defaults.baseURL;
+
+const Container = ({ darkMode = false }) => {
+  const navigate = useNavigate();
+  const [PRODUCTTYPE, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+
+  // Fetch products from backend
+  const fetchProducts = async () => {
+    try {
+      const response = await axiosInstance.get(API_PATHS.PRODUCTTYPE);
+      setProducts(response.data);
+      console.log(response.data);
+    } catch (error) {
+      console.error("Failed to fetch products", error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   useEffect(() => {
-    const fetchProduct = async () => {
-      try {
-        setLoading(true);
-        setError(null);
+    fetchProducts();
+  }, []);
 
-        // In a real app, replace with your actual API
-        const response = await fetch(`https://api.example.com/products/${productId}`);
-
-        if (!response.ok) {
-          throw new Error("Failed to fetch product");
-        }
-
-        const data = await response.json();
-        setProduct(data);
-      } catch (err) {
-        setError(err.message);
-        setProduct(null);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchProduct();
-  }, [productId]);
-
-  if (loading) return <div>Loading...</div>;
-  if (error) return <div style={{ color: "red" }}>Error: {error}</div>;
-  if (!product) return <div>Product not found.</div>;
+  if (loading) return <p className="text-center my-5">Loading...</p>;
+  // Filtered products
+  const filteredProducts = PRODUCTTYPE.filter(
+    (product) => product.type === "Container-Seal"
+  );
 
   return (
-    <div className="product-card">
-      <img
-        src={product.imageURL || product.image || "/images/placeholder.png"}
-        alt={product.name || "Product Image"}
-      />
-      <h2>{product.name}</h2>
-      <p>{product.description}</p>
-      <p>Price: ${product.price}</p>
+    <div className="container">
+      {filteredProducts.length === 0 ? (
+        <p className="text-center text-danger fw-bold my-5">
+          🚫 No record found
+        </p>
+      ) : (
+        filteredProducts.map((product, index) => (
+          <div
+            key={product._id || index}
+            className="row shadow rounded p-3 p-md-4 align-items-center mb-4"
+            style={{ background: "#f9f9f9" }}
+          >
+            {/* Image Section */}
+            <div className="col-12 col-md-4 text-center mb-3 mb-md-0">
+              <div
+                className={`product-card shadow h-100 ${
+                  darkMode ? "bg-secondary text-light" : ""
+                }`}
+              >
+                <img
+                  src={
+                    product.image
+                      ? `${backend_url}/${product.image.replace(/^\/+/, "")}`
+                      : `${backend_url}/uploads/productTypes/default.jpg`
+                  }
+                  alt={product.name || "Product"}
+                  className="product-image mx-auto d-block img-fluid rounded"
+                  style={{ maxHeight: "220px", objectFit: "contain" }}
+                />
+              </div>
+            </div>
 
-      {/* Example extra UI elements */}
-      <button className="btn btn-primary">Add to Cart</button>
+            {/* Details Section */}
+            <div className="col-12 col-md-8">
+              <h5 className="fw-bold text-primary mb-2 text-center text-md-start">
+                {product.title}
+              </h5>
+              <p>
+                <strong>FEATURE:</strong> {product.features}
+              </p>
+              <p>
+                <strong>APPLICATION:</strong> {product.application}
+              </p>
+              <p>
+                <strong>COLORS:</strong> {product.colour}
+              </p>
+              <p>
+                <strong>PACKAGE:</strong> {product.packing}
+              </p>
+              <p>
+                <strong>SERIAL NUMBER:</strong> {product.serialNo}
+              </p>
+              <p>
+                <strong>CUSTOMIZATION:</strong> {product.customization}
+              </p>
+
+              {/* CTA Button */}
+              <div className="text-center text-md-start">
+                <button
+                  className="btn btn-success btn-sm fw-bold px-4 py-2 mt-3"
+                  onClick={() => navigate("/quate")}
+                >
+                  CLICK HERE
+                </button>
+              </div>
+            </div>
+          </div>
+        ))
+      )}
     </div>
   );
 };
 
-export default Product;
+export default Container;

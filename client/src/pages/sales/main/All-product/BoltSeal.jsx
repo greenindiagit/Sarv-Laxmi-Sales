@@ -3,17 +3,16 @@ import { useNavigate } from "react-router-dom";
 import axiosInstance from "../../../../api/axiosInstance";
 import API_PATHS from "../../../../api/apiUrl";
 
-const BACKEND_URL = "http://localhost:5000"; // Change this if your backend URL is different
-
+const backend_url = axiosInstance.defaults.baseURL;
 const BoltSeal = ({ darkMode = false }) => {
   const navigate = useNavigate();
-  const [products, setProducts] = useState([]);
+  const [PRODUCTTYPE, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
 
   // Fetch products from backend
   const fetchProducts = async () => {
     try {
-      const response = await axiosInstance.get(API_PATHS.PRODUCTS);
+      const response = await axiosInstance.get(API_PATHS.PRODUCTTYPE);
       setProducts(response.data);
       console.log(response.data);
     } catch (error) {
@@ -29,11 +28,19 @@ const BoltSeal = ({ darkMode = false }) => {
   }, []);
 
   if (loading) return <p className="text-center my-5">Loading...</p>;
-
+  // Filtered products
+  const filteredProducts = PRODUCTTYPE.filter(
+    (product) => product.type === "Bolt-Seal"
+  );
   return (
     <div className={`container py-4 ${darkMode ? "bg-dark text-white" : ""}`}>
       <div className="row g-4">
-        {products.map((product, index) => (
+          {filteredProducts.length === 0 ? (
+        <p className="text-center text-danger fw-bold my-5">
+          🚫 No record found
+        </p>
+      ) : (
+        filteredProducts.map((product, index) => (
           <div key={product._id || index} className="col-sm-6 col-md-4">
             <div
               className={`product-card shadow h-100 ${
@@ -41,12 +48,8 @@ const BoltSeal = ({ darkMode = false }) => {
               }`}
             >
               <img
-                src={
-                  product.image
-                    ? `${BACKEND_URL}${product.image}`
-                    : "/uploads/products/default.jpg"
-                }
-                alt={product.title}
+               src={product.image ? `${backend_url}${product.image}` : "/uploads/productTypes/default.jpg"}
+            alt={product.title}
                 className="product-image mx-auto d-block"
               />
               <div className="product-content">
@@ -67,7 +70,7 @@ const BoltSeal = ({ darkMode = false }) => {
               </div>
             </div>
           </div>
-        ))}
+       ) ))}
       </div>
     </div>
   );

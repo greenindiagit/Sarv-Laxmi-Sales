@@ -1,0 +1,34 @@
+/* APP WRAPPER */
+.app-layout {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+/* MAIN WRAPPER (header ke niche) */
+.main-layout {
+  display: flex;
+  flex: 1;
+  margin-top: 60px; /* header ki jagah */
+  height: calc(100vh - 60px);
+  overflow: hidden;
+}
+/* SIDEBAR */
+.deznav {
+  width: 250px;
+  background: #1e293b;
+  color: #fff;
+  flex-shrink: 0;
+  height: 100%;
+  overflow-y: auto;
+  position: sticky;
+  top: 60px; /* header ke niche fix */
+}
+
+.content {
+  flex: 1;
+  padding: 20px;   /* optional spacing */
+  overflow-y: auto;
+  background: #f9f9f9;
+}
+

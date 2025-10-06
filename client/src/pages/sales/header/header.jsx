@@ -56,6 +56,8 @@ export default function Header() {
                 className="nav-link dropdown-toggle"
                 role="button"
                 onClick={toggleDropdown}
+                to="/product"
+                
               >
                 Products
               </span>
