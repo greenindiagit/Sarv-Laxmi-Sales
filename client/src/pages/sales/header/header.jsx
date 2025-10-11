@@ -1,13 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { FaWhatsapp } from "react-icons/fa";
 import logo from "/logo/logo.webp";
+import axiosInstance from "../../../api/axiosInstance";
+import API_PATHS from "../../../api/apiUrl";
 import "./header.css";
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false); // Navbar collapse
   const [isDropdownOpen, setIsDropdownOpen] = useState(false); // Products dropdown
-
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
   const toggleNavbar = () => setIsOpen(!isOpen);
   const closeNavbar = () => {
     setIsOpen(false);
@@ -15,6 +18,24 @@ export default function Header() {
   };
 
   const toggleDropdown = () => setIsDropdownOpen(!isDropdownOpen);
+
+  const fetchProducts = async () => {
+    setLoading(true);
+    try {
+      const res = await axiosInstance.get(API_PATHS.productMaster);
+      setProducts(res.data || []);
+      // console.log(res.data);ss
+    } catch (err) {
+      console.error(err);
+      // toast.error("Failed to fetch product masters.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchProducts();
+  }, []);
 
   return (
     <nav className="navbar navbar-expand-lg header-container">
@@ -39,15 +60,21 @@ export default function Header() {
         </button>
 
         {/* Navbar links */}
-        <div className={`collapse navbar-collapse ${isOpen ? "show" : ""}`} id="navbarNav">
+        <div
+          className={`collapse navbar-collapse ${isOpen ? "show" : ""}`}
+          id="navbarNav"
+        >
           <ul className="navbar-nav ms-auto align-items-center gap-2 gap-md-3">
-
             <li className="nav-item">
-              <Link className="nav-link" to="/" onClick={closeNavbar}>Home</Link>
+              <Link className="nav-link" to="/" onClick={closeNavbar}>
+                Home
+              </Link>
             </li>
 
             <li className="nav-item">
-              <Link className="nav-link" to="/about" onClick={closeNavbar}>About Us</Link>
+              <Link className="nav-link" to="/about" onClick={closeNavbar}>
+                About Us
+              </Link>
             </li>
 
             {/* Products Dropdown */}
@@ -57,38 +84,43 @@ export default function Header() {
                 role="button"
                 onClick={toggleDropdown}
                 to="/product"
-                
               >
                 Products
               </span>
+
               <ul className={`dropdown-menu ${isDropdownOpen ? "show" : ""}`}>
-                <li>
-                  <Link className="dropdown-item" to="/container" onClick={closeNavbar}>Container Seal</Link>
-                </li>
-                <li>
-                  <Link className="dropdown-item" to="/bolt" onClick={closeNavbar}>Bolt Seal</Link>
-                </li>
-                <li>
-                  <Link className="dropdown-item" to="/plastic" onClick={closeNavbar}>Plastic Seal</Link>
-                </li>
-                <li>
-                  <Link className="dropdown-item" to="/cutter" onClick={closeNavbar}>Wire / Seal Cutter</Link>
-                </li>
-                <li>
-                  <Link className="dropdown-item" to="/padlock" onClick={closeNavbar}>Padlock Seal</Link>
-                </li>
-                <li>
-                  <Link className="dropdown-item" to="/product" onClick={closeNavbar}>View All Seals</Link>
-                </li>
+                {products.length > 0 ? (
+                  products.filter(Boolean).map((p, index) => (
+                    <li key={p._id || index}>
+                      <Link
+                        className="dropdown-item"
+                        to={`/product/${p.name}`} // link dynamically if needed
+                        onClick={closeNavbar}
+                      >
+                        {p.name}
+                      </Link>
+                    </li>
+                  ))
+                ) : (
+                  <p>No products found.</p>
+                )}
               </ul>
             </li>
 
             <li className="nav-item">
-              <Link className="nav-link" to="/contact" onClick={closeNavbar}>Contact Us</Link>
+              <Link className="nav-link" to="/contact" onClick={closeNavbar}>
+                Contact Us
+              </Link>
             </li>
 
             <li className="nav-item">
-              <Link className="request-quote ms-2" to="/quate" onClick={closeNavbar}>Request Quote</Link>
+              <Link
+                className="request-quote ms-2"
+                to="/quate"
+                onClick={closeNavbar}
+              >
+                Request Quote
+              </Link>
             </li>
 
             <li className="nav-item whatsapp-desktop whatsapp-mobile">
@@ -101,7 +133,6 @@ export default function Header() {
                 <FaWhatsapp className="whatsappicon" />
               </a>
             </li>
-
           </ul>
         </div>
       </div>

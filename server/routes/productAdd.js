@@ -9,7 +9,11 @@ import {
   updateProduct,
   deleteProduct,
   ProductTypesEdit,
-  ProductTypesDelete
+  ProductTypesDelete,
+  ProductMasterAdd,
+  getProductMaster,
+  updateProductMaster,
+  deleteProductMaster
 } from "../controllers/productAddController.js";
 
 const router = express.Router();
@@ -36,6 +40,11 @@ const storageProductTypes = multer.diskStorage({
 const uploadProduct = multer({ storage: storageProducts });
 const uploadProductType = multer({ storage: storageProductTypes });
 
+// ---------- Product Master routes ----------
+router.post("/product-master",   ProductMasterAdd);
+router.get("/product-master", getProductMaster);
+router.delete("/product-master/:id", deleteProductMaster);
+router.put("/product-master/:id", updateProductMaster);
 // ---------- Product routes ----------
 router.post("/products", uploadProduct.single("image"), addProduct);
 router.get("/products", getProducts);
@@ -46,4 +55,5 @@ router.post("/product-type", uploadProductType.single("image"), addProductType);
 router.get("/product-type", getProductType);
 router.delete("/product-type/:id", ProductTypesDelete);
 router.put("/product-type/:id", uploadProduct.single("image"), ProductTypesEdit);
+
 export default router;

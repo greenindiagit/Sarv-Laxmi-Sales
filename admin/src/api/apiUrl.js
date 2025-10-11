@@ -1,4 +1,5 @@
 const API_PATHS = {
+  productMaster:"/api/product-master",
   Projects: "/api/products", // for POST
   ProjectEdit: "/api/products", // for PUT, append /id
   ProjectDelete: "/api/products",
@@ -12,6 +13,7 @@ const API_PATHS = {
   deleteUsers: "/api/users",
   passwordReset: "/api/users/request-reset", // 🔹 fixed
   resetPassword: "/api/users/reset-password", // 🔹 added
+   Banners: "/api/banners",
 };
 
 export default API_PATHS;

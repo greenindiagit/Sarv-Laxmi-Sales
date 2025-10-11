@@ -15,7 +15,7 @@ import quatationRoutes from './routes/quatations.js';
 import productAddRoutes from './routes/productAdd.js'
 import usersRoutes from './routes/userRouter.js'
 import loginRoutes from './routes/loginRouter.js'
-
+import bannerRoutes from './routes/bannerRoutes.js'
 dotenv.config();
 
 const app = express();
@@ -40,7 +40,8 @@ app.use('/api', contactUsRoutes);
 app.use('/api', quatationRoutes);
 app.use('/api', productAddRoutes);
 app.use('/api', usersRoutes);
-app.use('/api',loginRoutes)
+app.use('/api',loginRoutes);
+app.use('/api',bannerRoutes);
 
 // Static for uploaded images
 app.use('/uploads', express.static(path.join(__dirname, 'public/uploads')));

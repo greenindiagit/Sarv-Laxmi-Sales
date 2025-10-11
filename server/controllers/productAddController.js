@@ -1,5 +1,95 @@
-import { productAdd, productType } from "../models/productAdd.js";
+import { productAdd, productType,productMasterAdd } from "../models/productAdd.js";
 
+
+// -------------Product Master ---------------
+export const ProductMasterAdd = async (req, res) => {
+  try {
+    const { name, url, description} =
+      req.body;
+
+ 
+    
+    let statusNumber = 1; // default active
+    if (req.body.status === "inactive") statusNumber = 0;
+    const newProductMaster = new productMasterAdd({
+      name,
+      url,
+      status: statusNumber,
+      description,
+    });
+
+    await newProductMaster.save();
+
+    res
+      .status(201)
+      .json({ message: "Product saved successfully", product: newProductMaster });
+  } catch (error) {
+    console.error("Error saving Product:", error);
+    res.status(500).json({ error: error.message });
+  }
+};
+
+export const getProductMaster = async (req, res) => {
+  try {
+    const products = await productMasterAdd.find();
+    res.json(products);
+  } catch (err) {
+    console.error("Error fetching products:", err);
+    res.status(500).json({ error: err.message });
+  }
+};
+
+export const updateProductMaster = async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    // Extract fields from form-data
+    const { name, url, description, status } =
+      req.body;
+    // Prepare updated fields
+    const updatedData = {
+      name,
+      url,
+      status,
+      description,
+    };
+
+    // Update product
+    const updatedProductMaster = await productMasterAdd.findByIdAndUpdate(
+      req.params.id,
+      updatedData,
+      { new: true }
+    );
+
+    if (!updatedProductMaster) {
+      return res.status(404).json({ error: "Product not found" });
+    }
+
+    res.json({
+      message: "Product updated successfully",
+      product: updatedProductMaster,
+    });
+  } catch (error) {
+    console.error("Error updating product:", error);
+    res.status(500).json({ error: error.message });
+  }
+};
+// Delete product by ID
+export const deleteProductMaster = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const deleted = await productMasterAdd.findByIdAndDelete(id);
+
+    if (!deleted) {
+      return res.status(404).json({ error: "Product not found" });
+    }
+
+    res.json({ message: "Product deleted successfully", product: deleted });
+  } catch (error) {
+    console.error("Error deleting product:", error);
+    res.status(500).json({ error: error.message });
+  }
+};
 // ----------------- Product -----------------
 
 export const getProducts = async (req, res) => {

@@ -44,7 +44,12 @@ const Sidebar = () => {
                   <li>
                     <NavLink to="/Admin/Master/UserList">Users List</NavLink>
                   </li>
-                
+                   <li>
+                    <NavLink to="/Admin/Master/BannerList">Banner List</NavLink>
+                  </li>
+                  <li>
+                    <NavLink to="/Admin/Master/ProductMasterList">Product List</NavLink>
+                  </li>
                 </ul>
               )}
             </li>

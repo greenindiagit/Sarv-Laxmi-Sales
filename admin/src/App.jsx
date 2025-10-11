@@ -9,6 +9,8 @@ import ProtectedRoute from "./context/ProtectedRoute";
 import Profile from "./pages/profile/profile";
 import RequestReset from "./pages/password-reset/RequestReset";
 import ResetPassword from "./pages/password-reset/ResetPassword";
+import BannersList from "./pages/master/banner";
+import ProductsMaster from "./pages/master/productMaster";
 import "./App.css";
 
 
@@ -36,6 +38,8 @@ function App() {
         <Route path="Project/ProjectList" element={<ProjectList />} />
         <Route path="Project/ProjectTypeList" element={<ProjectTypeList />} />
         <Route path="Profile" element={<Profile />} />
+        <Route path="Master/BannerList" element={<BannersList />} />
+         <Route path="Master/ProductMasterList" element={<ProductsMaster />} />
       </Route>
 
       {/* 🔴 Any wrong route → Redirect to login */}
