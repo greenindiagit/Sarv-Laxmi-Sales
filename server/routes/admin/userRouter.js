@@ -1,10 +1,10 @@
 import express from 'express';
 import multer from "multer";
-import { verifyToken } from "../middleware/auth.js";
+import { verifyToken } from "../../middleware/auth.js";
 const upload = multer();
 import { getUser, addUsers,deleteUser,changePassword,updateUser,getUserById 
     ,requestPasswordReset,resetPassword
-} from '../controllers/userControllers.js'; // note the .js
+} from '../../controllers/userControllers.js'; // note the .js
 
 const router = express.Router();
 // Protected routes (with verifyToken)

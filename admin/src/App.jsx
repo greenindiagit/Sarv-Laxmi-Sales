@@ -1,51 +1,31 @@
-import { Routes, Route, Navigate } from "react-router-dom";
-import Login from "./pages/login/Login";
-import AppLayout from "./components/layout/layout";
-import Dashboard from "./pages/dashboard/Dashboard";
-import UsersList from "./pages/master/userList";
-import ProjectList from "./pages/project/projectList";
-import ProjectTypeList from "./pages/project/projectTypeList";
-import ProtectedRoute from "./context/ProtectedRoute";
-import Profile from "./pages/profile/profile";
-import RequestReset from "./pages/password-reset/RequestReset";
-import ResetPassword from "./pages/password-reset/ResetPassword";
-import BannersList from "./pages/master/banner";
-import ProductsMaster from "./pages/master/productMaster";
+
+/* eslint-disable no-unused-vars */
+import { Routes, Route } from "react-router-dom";
 import "./App.css";
+import Layout from "./components/layout/layout";
+import PrivateRoute from "./router/PrivateRoute";
+import routesConfig from "./router/routesConfig";
 
-
-function App() {
+const App = () => {
   return (
     <Routes>
-      {/* 🟢 Default Route → Always open Login page */}
-      <Route path="/" element={<Navigate to="/login" replace />} />
-
-      {/* 🟠 Login Page */}
-      <Route path="/login" element={<Login />} />
-      <Route path="/request-reset" element={<RequestReset />} />
-      <Route path="/reset-password" element={<ResetPassword />} />
-      {/* 🔵 Protected Admin Routes (only after login) */}
       <Route
-        path="/Admin/*"
         element={
-          <ProtectedRoute>
-            <AppLayout />
-          </ProtectedRoute>
+          <PrivateRoute roles={["admin"]}>
+            <Layout />
+          </PrivateRoute>
         }
       >
-        <Route index element={<Dashboard />} />
-        <Route path="Master/UserList" element={<UsersList />} />
-        <Route path="Project/ProjectList" element={<ProjectList />} />
-        <Route path="Project/ProjectTypeList" element={<ProjectTypeList />} />
-        <Route path="Profile" element={<Profile />} />
-        <Route path="Master/BannerList" element={<BannersList />} />
-         <Route path="Master/ProductMasterList" element={<ProductsMaster />} />
+        {routesConfig.private.map(({ path, element: Component }, i) => (
+          <Route key={i} path={path} element={<Component />} />
+        ))}
       </Route>
 
-      {/* 🔴 Any wrong route → Redirect to login */}
-      <Route path="*" element={<Navigate to="/login" replace />} />
+      {routesConfig.public.map(({ path, element: Component }, i) => (
+        <Route key={i} path={path} element={<Component />} />
+      ))}
     </Routes>
   );
-}
+};
 
 export default App;
