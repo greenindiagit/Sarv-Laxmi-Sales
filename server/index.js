@@ -3,16 +3,12 @@ import dotenv from 'dotenv';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import cors from 'cors';
-import connectDB from './config/db.js';
-import corsOptions from './middleware/corsOptions.js';
-import errorHandler from './middleware/errorHandler.js';
+import connectDB from './src/config/db.js';
+import errorHandler from './src/middleware/errorHandler.js';
 import compression from "compression";
-import contactUsRoutes from './routes/contactUs.js';
-import quatationRoutes from './routes/quatations.js';
-import productAddRoutes from './routes/productAdd.js'
-import usersRoutes from './routes/userRouter.js'
-import loginRoutes from './routes/loginRouter.js'
-import bannerRoutes from './routes/bannerRoutes.js'
+import testRoutes from "./src/routes/test.routers.js";
+import commonRoutes from "./src/routes/common/common.routes.js";
+  import adminRoutes from "./src/routes/admin/admin.routers.js";
 // Get the current file 
 const __filename = fileURLToPath(import.meta.url);
 
@@ -36,13 +32,11 @@ app.use(express.urlencoded({ extended: true }));
 app.use(compression());
 app.use(cors());
 // API Routes
-app.use('/api', contactUsRoutes);
-app.use('/api', quatationRoutes);
-app.use('/api', productAddRoutes);
-app.use('/api', usersRoutes);
-app.use('/api',loginRoutes);
-app.use('/api',bannerRoutes);
 
+app.use("/api", testRoutes);
+app.use("/api/common", commonRoutes);
+app.use("/api/admin", adminRoutes);
+///
 // Static for uploaded images
 app.use('/uploads', express.static(path.join(__dirname, 'public/uploads')));
 
