@@ -293,6 +293,8 @@ span.username-show:hover {
   height: calc(100vh - 60px); /* pure viewport height minus header */
 }
 
+/* Main Content (Outlet) */
+
 /* Scrollable section */
 .deznav-scroll {
   height: 100%;
@@ -435,6 +437,16 @@ span.username-show:hover {
   background-color: #5c6ac4;
 }
 
+.login-logo {
+  height: 90px;
+  width: 90px;
+  object-fit: contain;       
+  display: block;           
+  margin: 0 auto 20px;      
+  border-radius: 50%;       
+  background-color: #f8f9fa;  
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); 
+}
 /* Links */
 .login-links {
   margin-top: 15px;

@@ -5,6 +5,8 @@ import "./App.css";
 import Layout from "./components/layout/layout";
 import PrivateRoute from "./router/PrivateRoute";
 import routesConfig from "./router/routesConfig";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/js/bootstrap.bundle.min.js";
 
 const App = () => {
   return (

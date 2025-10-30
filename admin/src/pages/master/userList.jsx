@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import CommonBreadcrumb from "../../components/breadcrumb/breadcrumb";
-import axiosInstance from "../../api/axiosInstance";
-import API_PATHS from "../../api/apiUrl";
-
+import { useAuth } from "../../context/auth.context";
+import axios from "axios";
+import apis from "../../api/apis";
 const UserList = () => {
+  const { validToken } = useAuth();
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(true);
   const [formData, setFormData] = useState({
@@ -16,17 +17,29 @@ const UserList = () => {
   const [showModal, setShowModal] = useState(false);
 
   // Fetch users
-  const fetchUsers = async () => {
-    try {
-      const res = await axiosInstance.get(API_PATHS.users);
-      setUsers(res.data);
-    } catch (err) {
-      console.error("Error fetching users:", err);
-    } finally {
-      setLoading(false);
-    }
-  };
+// ✅ Fetch all users
+const fetchUsers = async () => {
+  setLoading(true);
+  try {
+    const response = await axios.get(apis.user.get, {
+      headers: { Authorization: `Bearer ${validToken}` },
+    });
 
+    console.log("Fetch users response:", response);
+
+    // ✅ Handle response safely
+    const usersData =
+      response?.data?.data && Array.isArray(response.data.data)
+        ? response.data.data
+        : [];
+
+    setUsers(usersData);
+  } catch (err) {
+    console.error("❌ Error fetching users:", err.response?.data || err.message);
+  } finally {
+    setLoading(false);
+  }
+};
   useEffect(() => {
     fetchUsers();
   }, []);
@@ -34,38 +47,29 @@ const UserList = () => {
   const handleChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
-  const handleSubmit = async (e) => {
+ const handleSubmit = async (e) => {
     e.preventDefault();
-
-    // Client-side duplicate check when adding new user
-    if (!editingUser) {
-      const duplicate = users.find(
-        (u) =>
-          u.name === formData.name ||
-          u.email === formData.email ||
-          u.mobile === formData.mobile
-      );
-      if (duplicate) {
-        alert("Name, email, or mobile already exists");
-        return;
-      }
-    }
 
     try {
       if (editingUser) {
-        const res = await axiosInstance.put(
-          `${API_PATHS.users}/${editingUser._id}`,
-          formData
+        // Update user
+        const res = await axios.put(
+          `${apis.user.update}/${editingUser._id}`,
+          formData,
+          { headers: { Authorization: validToken } }
         );
         setUsers((prev) =>
-          prev.map((u) => (u._id === editingUser._id ? res.data : u))
+          prev.map((u) => (u._id === editingUser._id ? res.data.data : u))
         );
       } else {
-        const res = await axiosInstance.post(API_PATHS.users, formData);
-        setUsers((prev) => [...prev, res.data.users]);
+        // Add new user
+        const res = await axios.post(apis.user.create, formData, {
+          headers: { Authorization: validToken },
+        });
+        setUsers((prev) => [...prev, res.data.data]);
       }
 
-      // Reset modal
+      // Reset form & close modal
       setFormData({ name: "", email: "", mobile: "", password: "" });
       setEditingUser(null);
       setShowModal(false);
@@ -75,10 +79,12 @@ const UserList = () => {
     }
   };
 
-  const handleDelete = async (id) => {
+ const handleDelete = async (id) => {
     if (!window.confirm("Are you sure you want to delete this user?")) return;
     try {
-      await axiosInstance.delete(`${API_PATHS.users}/${id}`);
+      await axios.delete(`${apis.user.delete}/${id}`, {
+        headers: { Authorization: validToken },
+      });
       setUsers((prev) => prev.filter((u) => u._id !== id));
     } catch (err) {
       console.error("Error deleting user:", err);

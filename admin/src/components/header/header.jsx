@@ -45,7 +45,7 @@ export default function Header() {
     <nav className="navbar navbar-expand-lg header-container">
       <div className="container">
         <Link className="navbar-brand p-0 m-0" to="/" onClick={closeNavbar}>
-          <img src="/logo.png" height="50" alt="logo" className="logoImage" />
+          <img src="./logo.png" height="50" alt="logo" className="logoImage" />
         </Link>
 
         <button

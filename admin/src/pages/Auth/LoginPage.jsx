@@ -8,14 +8,14 @@ import apis from "../../api/apis";
 const LoginPage = () => {
   const { storeToken } = useAuth();
   const navigate = useNavigate();
-  const [mobile, setMobile] = useState("");
+  const [email, setMobile] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
 
   const handleLogin = async (e) => {
     e.preventDefault();
 
-    if (!mobile) {
+    if (!email) {
       toast.error("Mobile number is required");
       return;
     };
@@ -27,12 +27,13 @@ const LoginPage = () => {
 
     try {
       setLoading(true);
-      const response = await axios.post(apis.auth.login, { mobile, password });
+      const response = await axios.post(apis.auth.login, { email, password });
 
       if (response?.data?.token) {
         toast.success("Login successful");
         await storeToken(response?.data?.token);
-        navigate("/");
+       navigate("/dashboard");
+         console.log("Stored token:", response?.data?.token);
       } else {
         toast.error("Something went wrong");
       };
@@ -44,30 +45,28 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="d-flex justify-content-center align-items-center vh-100 bg-light">
-      <div className="card shadow-lg border-0 rounded-4" style={{ width: "400px" }}>
-        <div className="card-body p-4">
-          <h3 className="card-title text-center mb-4 fw-bold text-primary">Login</h3>
+    <div className="login-wrapper">
+      <div className="login-card">
+        <div className="card-body">
+          <img className="login-logo" src="logo.png"/>
           <p className="text-muted text-center mb-4">
-            Enter your mobile number and password to login.
+          Please provide your login details below.
           </p>
           <form onSubmit={handleLogin}>
             <div className="mb-3">
-              <label className="form-label">Mobile Number</label>
               <input
                 type="text"
                 className="form-control rounded-pill"
-                placeholder="Enter your mobile number"
-                value={mobile}
+                placeholder="Username"
+                value={email}
                 onChange={(e) => setMobile(e.target.value)}
               />
             </div>
             <div className="mb-3">
-              <label className="form-label">Password</label>
               <input
                 type="password"
                 className="form-control rounded-pill"
-                placeholder="Enter your password"
+                placeholder="Password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
@@ -80,6 +79,10 @@ const LoginPage = () => {
               >
                 {loading ? "Logging in..." : "Login"}
               </button>
+                <div className="login-links">
+          <a href="request-reset">Back to Home</a>
+           <a href="request-reset">Forgot your password</a>
+        </div>
             </div>
           </form>
         </div>

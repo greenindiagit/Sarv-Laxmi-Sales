@@ -4,10 +4,14 @@ import Sidebar from "../sidebar/sidebar";
 
 const Layout = () => {
   return (
-    <div className="main-wrapper">
+  <div className="app-layout">
       <Header />
-      <Sidebar />
-      <Outlet />
+      <div className="main-layout">
+        <Sidebar />
+        <main className="content">
+          <Outlet />
+        </main>
+      </div>
     </div>
   );
 };

@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import CommonBreadcrumb from "../../components/breadcrumb/breadcrumb";
-import axiosInstance from "../../api/axiosInstance";
-import API_PATHS from "../../api/apiUrl";
-
-const backend_url = axiosInstance.defaults.baseURL;
+import { useAuth } from "../../context/auth.context";
+import axios from "axios";
+import apis from "../../api/apis"; // Ensure apis.Banners.get, post, put, delete are defined
 
 const BannersList = () => {
+  const { validToken } = useAuth();
   const [banners, setBanners] = useState([]);
   const [loading, setLoading] = useState(true);
   const [showModal, setShowModal] = useState(false);
@@ -20,16 +20,42 @@ const BannersList = () => {
   });
   const [message, setMessage] = useState("");
 
-  // Fetch banners
+  // Base URL for images
+  const baseUrl =
+    apis.baseUrl ||
+    import.meta.env.VITE_API_URL ||
+    "http://localhost:5000"; // fallback
+
+  // ✅ Fetch all banners safely
   const fetchBanners = async () => {
     try {
-      const response = await axiosInstance.get(API_PATHS.Banners);
-      setBanners(response.data);
+      const response = await axios.get(apis.Banners.get, {
+        headers: { Authorization: `Bearer ${validToken}` },
+      });
+
+      console.log("Banner API response:", response.data);
+      const data = response.data;
+
+      // ✅ Handle different response structures
+      if (Array.isArray(data)) {
+        setBanners(data);
+      } else if (Array.isArray(data.banners)) {
+        setBanners(data.banners);
+      } else if (Array.isArray(data.data)) {
+        setBanners(data.data);
+      } else {
+        console.warn("⚠️ Unexpected response format:", data);
+        setBanners([]);
+      }
     } catch (error) {
-      console.error("Error fetching projects:", error);
+      console.error("Error fetching banners:", error);
+      setMessage("❌ Failed to load banners.");
+      setBanners([]);
+    } finally {
+      setLoading(false);
     }
-    setLoading(false);
   };
+
   useEffect(() => {
     fetchBanners();
   }, []);
@@ -37,14 +63,13 @@ const BannersList = () => {
   // Input change handler
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-    if (editingBanner) setEditingBanner({ ...editingBanner, [name]: value });
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   // File change handler
   const handleFileChange = (e) => {
     const file = e.target.files[0];
-    setFormData({ ...formData, bannerImg: file });
+    setFormData((prev) => ({ ...prev, bannerImg: file }));
     if (file) setImagePreview(URL.createObjectURL(file));
   };
 
@@ -72,66 +97,60 @@ const BannersList = () => {
       bannerImg: null,
       status: banner.status,
     });
-    if (banner.bannerImg) {
-      const fullUrl = `${axiosInstance.defaults.baseURL}${banner.bannerImg}`;
-      setImagePreview(fullUrl);
-    } else {
-      setImagePreview(null);
-    }
+    setImagePreview(
+      banner.bannerImg ? `${baseUrl}${banner.bannerImg}` : null
+    );
     setShowModal(true);
   };
 
-  // Add Banner
+  // ✅ Add Banner
   const handleAddBanner = async () => {
     const data = new FormData();
-    data.append("title", formData.title);
-    data.append("subtitle", formData.subtitle);
-    data.append("company", formData.company);
-    data.append("status", formData.status);
-    if (formData.bannerImg) data.append("bannerImg", formData.bannerImg); // ✅ Multer expects "image"
+    Object.entries(formData).forEach(([key, value]) => {
+      if (value !== null) data.append(key, value);
+    });
 
     try {
-      const response = await axiosInstance.post(API_PATHS.Banners, data, {
-        headers: { "Content-Type": "multipart/form-data" },
+      const response = await axios.post(apis.Banners.add, data, {
+        headers: {
+          Authorization: `Bearer ${validToken}`,
+          "Content-Type": "multipart/form-data",
+        },
       });
-      setBanners((prev) => [...prev, response.data.banner]);
+
+      const added = response.data.banner || response.data;
+      setBanners((prev) => [...prev, added]);
       setMessage("✅ Banner added successfully!");
       setShowModal(false);
-      setFormData({
-        title: "",
-        subtitle: "",
-        company: "",
-        bannerImg: null,
-        status: 1,
-      });
-      setImagePreview(null);
     } catch (error) {
       console.error("Error adding banner:", error);
       setMessage("❌ Failed to add banner.");
     }
   };
 
-  // Save Edited Banner
+  // ✅ Update Banner
   const handleSaveEdit = async () => {
     if (!editingBanner || !editingBanner._id) return;
-
     const data = new FormData();
-    data.append("title", formData.title);
-    data.append("subtitle", formData.subtitle);
-    data.append("company", formData.company);
-    data.append("status", formData.status);
-    if (formData.bannerImg) data.append("bannerImg", formData.bannerImg);
+    Object.entries(formData).forEach(([key, value]) => {
+      if (value !== null) data.append(key, value);
+    });
 
     try {
-      const response = await axiosInstance.put(
-        `${API_PATHS.Banners}/${editingBanner._id}`,
+      const response = await axios.put(
+        `${apis.Banners.update}/${editingBanner._id}`,
         data,
-        { headers: { "Content-Type": "multipart/form-data" } }
+        {
+          headers: {
+            Authorization: `Bearer ${validToken}`,
+            "Content-Type": "multipart/form-data",
+          },
+        }
       );
+
+      const updated = response.data.banner || response.data;
       setBanners((prev) =>
-        prev.map((b) =>
-          b._id === editingBanner._id ? response.data.banner : b
-        )
+        prev.map((b) => (b._id === editingBanner._id ? updated : b))
       );
       setMessage("✅ Banner updated successfully!");
       setShowModal(false);
@@ -143,13 +162,15 @@ const BannersList = () => {
     }
   };
 
-  // Delete Banner
+  // ✅ Delete Banner
   const handleDeleteBanner = async (id) => {
     if (!window.confirm("Are you sure you want to delete this banner?")) return;
 
     try {
-      await axiosInstance.delete(`${API_PATHS.Banners}/${id}`);
-      setBanners(banners.filter((b) => b._id !== id));
+      await axios.delete(`${apis.Banners.delete}/${id}`, {
+        headers: { Authorization: `Bearer ${validToken}` },
+      });
+      setBanners((prev) => prev.filter((b) => b._id !== id));
       setMessage("✅ Banner deleted successfully!");
     } catch (error) {
       console.error("Error deleting banner:", error);
@@ -177,6 +198,8 @@ const BannersList = () => {
 
       {loading ? (
         <p>Loading Banners...</p>
+      ) : banners.length === 0 ? (
+        <p>No banners found.</p>
       ) : (
         <table className="table table-striped table-bordered align-middle">
           <thead className="table-dark">
@@ -195,7 +218,7 @@ const BannersList = () => {
                   <img
                     src={
                       banner.bannerImg
-                        ? `${axiosInstance.defaults.baseURL}${banner.bannerImg}`
+                        ? `${baseUrl}${banner.bannerImg}`
                         : "/uploads/Banners/default.jpg"
                     }
                     alt={banner.title}
@@ -230,6 +253,7 @@ const BannersList = () => {
         </table>
       )}
 
+      {/* Modal */}
       {showModal && (
         <div
           className="modal d-block"

@@ -20,7 +20,7 @@ const Sidebar = () => {
           <ul className="metismenu" id="menu">
             {/* Dashboard */}
             <li>
-              <NavLink to="/Admin">
+              <NavLink to="/dashboard/">
                 <div className="menu-icon">
                   {/* SVG here */}
                 </div>
@@ -42,13 +42,13 @@ const Sidebar = () => {
               {openMenu === "master" && (
                 <ul>
                   <li>
-                    <NavLink to="/Admin/Master/UserList">Users List</NavLink>
+                    <NavLink to="/users">Users List</NavLink>
                   </li>
                    <li>
-                    <NavLink to="/Admin/Master/BannerList">Banner List</NavLink>
+                    <NavLink to="/banner">Banner List</NavLink>
                   </li>
                   <li>
-                    <NavLink to="/Admin/Master/ProductMasterList">Product List</NavLink>
+                    <NavLink to="/project-master">Product List</NavLink>
                   </li>
                 </ul>
               )}
@@ -69,10 +69,10 @@ const Sidebar = () => {
               {openMenu === "Project" && (
                 <ul>
                   <li>
-                    <NavLink to="/Admin/Project/ProjectList">Project List</NavLink>
+                    <NavLink to="/Projects">Project List</NavLink>
                   </li>
                   <li>
-                    <NavLink to="/Admin/Project/ProjectTypeList">Project Type List</NavLink>
+                    <NavLink to="/ProjectType">Project Type List</NavLink>
                   </li>
                 </ul>
               )}
