@@ -17,7 +17,7 @@ const userSchema = new mongoose.Schema({
         message: "Please provide a valid email address",
       },
     },
-    mobile: {
+ mobile: {
       type: String,
       unique: true,
       trim: true,

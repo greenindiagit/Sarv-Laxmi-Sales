@@ -22,18 +22,14 @@ const BannersList = () => {
 
   // Base URL for images
   const baseUrl =
-    apis.baseUrl ||
-    import.meta.env.VITE_API_URL ||
-    "http://localhost:5000"; // fallback
+    apis.baseUrl || import.meta.env.VITE_API_URL || "http://localhost:5000"; // fallback
 
   // ✅ Fetch all banners safely
   const fetchBanners = async () => {
     try {
       const response = await axios.get(apis.Banners.get, {
-        headers: { Authorization: `Bearer ${validToken}` },
+        headers: { Authorization: validToken },
       });
-
-      console.log("Banner API response:", response.data);
       const data = response.data;
 
       // ✅ Handle different response structures
@@ -97,9 +93,7 @@ const BannersList = () => {
       bannerImg: null,
       status: banner.status,
     });
-    setImagePreview(
-      banner.bannerImg ? `${baseUrl}${banner.bannerImg}` : null
-    );
+    setImagePreview(banner.bannerImg ? `${baseUrl}${banner.bannerImg}` : null);
     setShowModal(true);
   };
 

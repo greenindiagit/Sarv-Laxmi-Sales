@@ -9,20 +9,20 @@ import {
   requestPasswordReset,
   resetPassword,
 } from "../../controllers/admin/user.controller.js";
-import isLoggedIn from "../../middlewares/admin/auth.middleware.js";
+import isLoggedIn from "../../middleware/admin/auth.middleware.js";
 
 const router = express.Router();
 
 // Protected Routes
-router.get("/users", isLoggedIn, getAllUsers);
-router.post("/users", isLoggedIn, registerUser);
-router.get("/users/:id", isLoggedIn, getUserById);
-router.put("/users/:id", isLoggedIn, updateUser);
-router.delete("/users/:id", isLoggedIn, deleteUser);
-router.put("/users/:id/change-password", isLoggedIn, changePassword);
+router.get("/", isLoggedIn, getAllUsers);
+router.post("/register", isLoggedIn, registerUser);
+router.get("/:id", isLoggedIn, getUserById);
+router.put("/:id", isLoggedIn, updateUser);
+router.delete("/:id", isLoggedIn, deleteUser);
+router.put("/change-password/:id", isLoggedIn, changePassword);
 
 // Public Password Reset Routes
-router.post("/users/request-password-reset", requestPasswordReset);
-router.post("/users/reset-password", resetPassword);
+router.post("/request-password-reset", requestPasswordReset);
+router.post("/reset-password", resetPassword);
 
 export default router;

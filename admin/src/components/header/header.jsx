@@ -95,7 +95,7 @@ export default function Header() {
                 <li>
                   <Link
                     className="dropdown-item"
-                    to="/Admin/profile"
+                    to="/profile"
                     onClick={() => {
                       setIsDropdownOpen(false); // close dropdown
                       closeNavbar(); // optional

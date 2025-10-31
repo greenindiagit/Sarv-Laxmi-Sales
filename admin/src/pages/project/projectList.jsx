@@ -1,9 +1,13 @@
 import React, { useState, useEffect } from "react";
 import CommonBreadcrumb from "../../components/breadcrumb/breadcrumb";
-import axiosInstance from "../../api/axiosInstance";
-import API_PATHS from "../../api/apiUrl";
-const backend_url = axiosInstance.defaults.baseURL;
+import { useAuth } from "../../context/auth.context";
+import axios from "axios";
+import apis from "../../api/apis";
+const backend_url =
+  apis.baseUrl || import.meta.env.VITE_API_URL || "http://localhost:5000"; // fallback
+
 const ProjectList = () => {
+  const { validToken } = useAuth();
   const [projects, setProjects] = useState([]);
   const [loading, setLoading] = useState(true);
   const [showModal, setShowModal] = useState(false);
@@ -21,7 +25,9 @@ const ProjectList = () => {
   // Fetch projects from API
   const fetchProjects = async () => {
     try {
-      const response = await axiosInstance.get(API_PATHS.Projects);
+      const response = await axios.get(apis.product.get, {
+        headers: { Authorization: validToken },
+      });
       setProjects(response.data);
     } catch (error) {
       console.error("Error fetching projects:", error);

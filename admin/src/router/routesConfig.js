@@ -7,6 +7,8 @@ import ProjectList from "../pages/project/projectList";
 import ProjectTypeList from "../pages/project/projectTypeList";
 import ProjectMaster from "../pages/master/productMaster";
 import banners from "../pages/master/banner";
+import Profile from "../pages/profile/profile";
+
 const routesConfig = {
   private: [
    { path: "/dashboard", element: DashboardPage },
@@ -15,7 +17,7 @@ const routesConfig = {
    { path: "/ProjectType", element: ProjectTypeList },
    { path: "/project-master", element: ProjectMaster },
    { path: "/banner", element: banners },
-   
+    { path: "/profile", element: Profile },
   ],
   public: [
     { path: "/login", element: LoginPage },
