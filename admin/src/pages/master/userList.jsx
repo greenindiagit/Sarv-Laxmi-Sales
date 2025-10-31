@@ -17,29 +17,29 @@ const UserList = () => {
   const [showModal, setShowModal] = useState(false);
 
   // Fetch users
-// ✅ Fetch all users
-const fetchUsers = async () => {
-  setLoading(true);
-  try {
-    const response = await axios.get(apis.user.get, {
-      headers: { Authorization: `Bearer ${validToken}` },
-    });
+  // ✅ Fetch all users
+  const fetchUsers = async () => {
+    setLoading(true);
+    try {
+      const response = await axios.get(apis.user.get, {
+        headers: { Authorization: validToken },
+      });
+      // ✅ Handle response safely
+      const usersData =
+        response?.data?.data && Array.isArray(response.data.data)
+          ? response.data.data
+          : [];
 
-    console.log("Fetch users response:", response);
-
-    // ✅ Handle response safely
-    const usersData =
-      response?.data?.data && Array.isArray(response.data.data)
-        ? response.data.data
-        : [];
-
-    setUsers(usersData);
-  } catch (err) {
-    console.error("❌ Error fetching users:", err.response?.data || err.message);
-  } finally {
-    setLoading(false);
-  }
-};
+      setUsers(usersData);
+    } catch (err) {
+      console.error(
+        "❌ Error fetching users:",
+        err.response?.data || err.message
+      );
+    } finally {
+      setLoading(false);
+    }
+  };
   useEffect(() => {
     fetchUsers();
   }, []);
@@ -47,7 +47,7 @@ const fetchUsers = async () => {
   const handleChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
- const handleSubmit = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
@@ -79,7 +79,7 @@ const fetchUsers = async () => {
     }
   };
 
- const handleDelete = async (id) => {
+  const handleDelete = async (id) => {
     if (!window.confirm("Are you sure you want to delete this user?")) return;
     try {
       await axios.delete(`${apis.user.delete}/${id}`, {

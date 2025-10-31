@@ -3,43 +3,40 @@ import jwt from "jsonwebtoken";
 import { randomBytes } from "crypto";
 import ApiError from "../../helpers/apiError.js";
 import asyncHandler from "../../helpers/asyncHandler.js";
-import UserModel from "../../models/user.model.js";
-import { buildPagination } from "../../utils/pagination.js";
-import sendEmail from "../../utils/sendEmail.js"; // ⬅️ add if you have a mail utility
-import { hashPassword } from "../../utils/password.js"; // ⬅️ optional helper if available
+import UserModel from "../../models/users.js";
+import { buildPagination } from "../../utilities/pagination.js";
+import {sendEmail} from "../../utilities/sendEmail.js"; // ⬅️ add if you have a mail utility
 
-// 🔹 Generate JWT Token
-const generateToken = (id) => {
-  return jwt.sign({ id }, process.env.JWT_SECRET_KEY, { expiresIn: "30d" });
-};
+
 
 // 🔹 Register user
 export const registerUser = asyncHandler(async (req, res) => {
   const { name, email, mobile, password, role } = req.body;
-
+console.log("📩 Received form data:", req.body);
   const existingUserByEmail = await UserModel.findOne({ email });
-  if (existingUserByEmail) throw new ApiError(400, "Email already registered");
+  if (existingUserByEmail) {
+    throw new ApiError(400, "User already exists with this email id");
+  };
 
   const existingUserByMobile = await UserModel.findOne({ mobile });
-  if (existingUserByMobile) throw new ApiError(400, "Mobile already registered");
+  if (existingUserByMobile) {
+    throw new ApiError(400, "User already exists with this mobile number");
+  };
 
-  const hashedPassword = await bcrypt.hash(password, 10);
+  const user = await UserModel.create({ name, email, mobile, password, role });
 
-  const user = await UserModel.create({
-    name,
-    email,
-    mobile,
-    password: hashedPassword,
-    role,
-  });
+  if (!user) {
+    throw new ApiError(400, "Invalid user data");
+  };
 
   return res.status(201).json({
     success: true,
-    message: "User registered successfully",
-    user: { ...user.toObject(), password: undefined },
-    token: generateToken(user._id),
+    message: "Registered successfully",
+    user,
+    token: generateToken(user?._id),
   });
 });
+
 
 // 🔹 Get all users (with pagination, sorting, and search)
 export const getAllUsers = asyncHandler(async (req, res) => {
