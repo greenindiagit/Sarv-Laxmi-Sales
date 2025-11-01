@@ -64,11 +64,10 @@ function HomePageProduct() {
     serve clients across India and the globe.
   </p>
 
-  <div className="row g-3">
+  <div className="row">
     {products.map((product, index) => (
       <div className="col-6 col-md-4 mb-4" key={index}>
-        <div className="product-card h-100 d-flex flex-column justify-content-between">
-          {/* Image */}
+        <div className="product-card ">
           <div className="product-image-container">
             <img
               src={product.img}

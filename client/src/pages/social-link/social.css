@@ -102,6 +102,7 @@
   }
   .social-icons-container {
     gap: 0.75rem;
+    background-color: #cbcbbc;
   }
 }
 
@@ -112,5 +113,20 @@
   }
   .social-icons-container {
     gap: 0.5rem;
+     background-color: #cbcbbc;
   }
+  
+}
+
+@media (max-width: 575.98px) {
+    .cta-btn-phone {
+        font-size: 16px;
+        padding: 6px 10px;
+    }
+}
+@media (max-width: 575.98px) {
+    .cta-btn-order {
+        font-size: 16px;
+        padding: 8px 12px;
+    }
 }
