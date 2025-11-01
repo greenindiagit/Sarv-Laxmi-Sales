@@ -11,8 +11,8 @@
 }
 /* Follow Us title */
 .follow-us-title {
-  font-family: 'Great Vibes', cursive, sans-serif;
-  font-size: 1.5rem;
+  /* font-family: 'Great Vibes', cursive, sans-serif; */
+  font-size: 2.5rem;
   color: #333;
   margin-bottom: 1.5rem;
 }
@@ -28,7 +28,7 @@
 /* Base style: icon only, no background */
 .social-icon {
   color: inherit; /* Brand color */
-  font-size: 1.5rem;
+  font-size: 2.5rem;
   padding: 0.5rem;
   border-radius: 50%;
   display: inline-flex;
@@ -97,7 +97,7 @@
 /* Responsive sizing */
 @media (min-width: 576px) and (max-width: 991px) {
   .social-icon {
-    font-size: 1.3rem;
+    font-size: 2rem;
     padding: 0.6rem;
   }
   .social-icons-container {
@@ -107,7 +107,7 @@
 
 @media (max-width: 480px) {
   .social-icon {
-    font-size: 1.2rem;
+    font-size: 2rem;
     padding: 0.5rem;
   }
   .social-icons-container {

@@ -55,9 +55,9 @@ export default function Home() {
                     className="banner-img w-100"
                   />
                   <div className="banner-overlay position-absolute top-50 start-50 translate-middle text-center text-white">
-                    <h2 className="fw-bold fs-4 fs-md-2">{banner.title}</h2>
+                    <h2 className="fw-bold  fs-md-2">{banner.title}</h2>
                     <div className="banner-subtext">{banner.subtitle}</div>
-                    <h3 className="fw-bold mb-3 fs-5 fs-md-3">
+                    <h3 className="fw-bold mb-3  fs-md-3">
                       {banner.company}
                     </h3>
                   </div>

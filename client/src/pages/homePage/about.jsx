@@ -17,32 +17,29 @@ import CTA from "../Call-to-Action/cta";
 const accordionData = [
   {
     title: "Best Quality Seals",
-    content: "We provide high quality seals meeting international standards.",
+    content:
+      "Precision-engineered with premium materials to ensure maximum durability, security, and reliability for every use.",
   },
   {
-    title: "ISO 9001-2015 Quality Control System",
-    content: "All our products are certified under ISO 9001-2015.",
+    title: "ISO 9001:2015 Certified",
+    content: "We follow strict international standards — every product passes a multi-stage quality check for flawless performance.",
   },
   {
     title: "24x7 Live Support",
-    content: "Our support team is available round the clock.",
+    content: "Got a question? Our expert team is available around the clock to assist you with quick and effective solutions.",
   },
   {
-    title: "Customised Design",
-    content: "We design seals as per buyers' requirements.",
+    title: "Personalized Design",
+    content: "From size to color to branding — get seals designed exactly to fit your business identity and operational needs.",
   },
-  {
-    title: "Bar-code & QR Code Printing Option",
-    content:
-      "Clients can get seals with unique serial numbers via Barcode and QR code.",
-  },
+
   {
     title: "Easy Payment Option",
-    content: "Multiple payment options for buyer convenience.",
+    content: "Enjoy flexible and secure payment options designed for customer convenience.",
   },
   {
     title: "On-Time Delivery",
-    content: "We ensure safe and timely delivery of all orders.",
+    content: "We ensure timely order dispatch and delivery to keep your operations running smoothly.",
   },
 ];
 
@@ -56,43 +53,37 @@ export default function About() {
   return (
     <>
       {/* About Us Section */}
-      <section
-        className="section-light"
-      >
+      <section className="section-light">
         <div className="container">
-            <h2 className="mb-3 text-center">About Us</h2>
-            <p>
-              At{" "}
-              <strong className="text-dark">
-                Sarv Laxmi Sales Corporation
-              </strong>
-              , we believe security is not just a product—it’s a promise. Since
-              our inception in
-              <strong> 2018 </strong>, we have been delivering world-class
-              sealing and locking solutions tailored to diverse industries such
-              as logistics, transport, warehousing, and shipping.
-            </p>
-            <p>
-              We are built on strong values of{" "}
-              <strong>quality, ethics, and innovation</strong>, ensuring every
-              product meets the highest industry benchmarks. Our dedication to
-              customer satisfaction has helped us gain trust worldwide, and we
-              continue to evolve with technology and market needs.
-            </p>
+          <h2 className="mb-3 text-center">About Us</h2>
+          <p>
+            At{" "}
+            <strong className="text-dark">Sarv Laxmi Sales Corporation</strong>,
+            we believe security is not just a product—it’s a promise. Since our
+            inception in
+            <strong> 2018 </strong>, we have been delivering world-class sealing
+            and locking solutions tailored to diverse industries such as
+            logistics, transport, warehousing, and shipping.
+          </p>
+          <p>
+            We are built on strong values of{" "}
+            <strong>quality, ethics, and innovation</strong>, ensuring every
+            product meets the highest industry benchmarks. Our dedication to
+            customer satisfaction has helped us gain trust worldwide, and we
+            continue to evolve with technology and market needs.
+          </p>
 
-            {/* <!-- Core Values --> */}
-            <h5 className="mt-3 font-weight-bold text-dark">
-              Our Core Values:
-            </h5>
-            <ul className="list-unstyled pl-3">
-              <li>✔ Commitment to Quality</li>
-              <li>✔ Customer-Centric Approach</li>
-              <li>✔ Reliability and Trust</li>
-              <li>✔ Innovation and Continuous Improvement</li>
-            </ul>
+          {/* <!-- Core Values --> */}
+          <h5 className="mt-3 font-weight-bold text-dark">Our Core Values:</h5>
+          <ul className="list-unstyled pl-3">
+            <li>✔ Commitment to Quality</li>
+            <li>✔ Customer-Centric Approach</li>
+            <li>✔ Reliability and Trust</li>
+            <li>✔ Innovation and Continuous Improvement</li>
+          </ul>
 
-            {/* <!-- Mission & Vision --> */}
-            {/* <h5 class="mt-4 font-weight-bold text-dark">
+          {/* <!-- Mission & Vision --> */}
+          {/* <h5 class="mt-4 font-weight-bold text-dark">
               Our Mission & Vision
             </h5>
             <p>
@@ -105,7 +96,7 @@ export default function About() {
               security sealing products, setting new benchmarks in quality and
               customer trust.
             </p> */}
-          </div>
+        </div>
       </section>
       {/* Info Cards */}
       <section className="section-light">
@@ -158,8 +149,7 @@ export default function About() {
       </section>
 
       {/* History Section */}
-      <section
-        className="section-light">
+      <section className="section-light">
         <div className="container">
           <h2 className="mb-4 text-center">Our History</h2>
           <p>
@@ -197,9 +187,10 @@ export default function About() {
                 <div className="card-body">
                   <FaIndustry className="mb-3 fs-1 text-info" />
                   <h5>Manufacturing</h5>
-                  <p>
-                    We offer a wide range of customized designs as per buyers'
-                    business requirements.
+                  <p className="text-justify text-start">
+                    We craft high-performance products using advanced technology
+                    and strict quality controls to meet every client’s unique
+                    needs.
                   </p>
                 </div>
               </div>
@@ -210,9 +201,9 @@ export default function About() {
                 <div className="card-body">
                   <FaTruckMoving className="mb-3 fs-1 text-info" />
                   <h5>logistics & supply chain</h5>
-                  <p>
-                    Our R&D team develops highly secure seals with maximum cost
-                    effectiveness.
+                  <p className="text-justify text-start">
+                    Our expert logistics network ensures seamless distribution
+                    and cost-efficient movement of goods across global markets.
                   </p>
                 </div>
               </div>
@@ -223,9 +214,9 @@ export default function About() {
                 <div className="card-body">
                   <FaShoppingCart className="mb-3 fs-1 text-info" />
                   <h5>E-Commerce</h5>
-                  <p>
-                    Our professional team ensures the seals match customer needs
-                    and requirements.
+                  <p className="text-justify text-start">
+                    We help online retailers enhance their sales with fast,
+                    secure, and scalable fulfillment and delivery systems.
                   </p>
                 </div>
               </div>
@@ -236,9 +227,10 @@ export default function About() {
                 <div className="card-body">
                   <GiCow className="mb-3 fs-1 text-info" />
                   <h5>Dairy Industry</h5>
-                  <p>
-                    We provide the latest updates through social media and
-                    communication systems.
+                  <p className="text-justify text-start">
+                    We provide smart packaging and preservation solutions to
+                    maintain freshness and extend product shelf life in the
+                    dairy sector.
                   </p>
                 </div>
               </div>
@@ -249,9 +241,10 @@ export default function About() {
                 <div className="card-body">
                   <FaHospital className="mb-3 fs-1 text-info" />
                   <h5>Healthcare & Pharmaceuticals</h5>
-                  <p>
-                    Our products are available on major eCommerce and B2B
-                    platforms worldwide.
+                  <p className="text-justify text-start">
+                    Our precision-engineered seals and components ensure
+                    hygiene, safety, and reliability for sensitive healthcare
+                    applications.
                   </p>
                 </div>
               </div>
@@ -262,9 +255,10 @@ export default function About() {
                 <div className="card-body">
                   <FaHeadset className="mb-3 fs-1 text-info" />
                   <h5>Help & Support</h5>
-                  <p>
-                    Our in-house support team is available 24x7 to assist
-                    customers worldwide.
+                  <p className="text-justify text-start">
+                    We’re here 24/7 to assist with technical guidance, product
+                    information, and service-related inquiries anytime,
+                    anywhere.
                   </p>
                 </div>
               </div>
@@ -274,8 +268,7 @@ export default function About() {
       </section>
 
       {/* Why Choose Us Section */}
-      <section
-        className="section-light">
+      <section className="section-light">
         <div className="container">
           <div className="row align-items-center g-5">
             <div className="col-md-6">
@@ -353,32 +346,29 @@ export default function About() {
       {/* social link start */}
       <SocialSection />
       {/* Video & Map */}
-   <section className="section-light">
-  <div className="container">
-    <div className="row g-4 justify-content-center">
-      
-      {/* Video */}
-      <div className="col-12 col-md-6">
-        <div className="ratio ratio-16x9">
-          <iframe
-            src="https://www.youtube.com/embed/U-M1oep7kjI"
-            title="Company Video"
-            allowFullScreen
-          ></iframe>
+      <section className="section-light">
+        <div className="container">
+          <div className="row g-4 justify-content-center">
+            {/* Video */}
+            <div className="col-12 col-md-6">
+              <div className="ratio ratio-16x9">
+                <iframe
+                  src="https://www.youtube.com/embed/U-M1oep7kjI"
+                  title="Company Video"
+                  allowFullScreen
+                ></iframe>
+              </div>
+            </div>
+
+            {/* Map */}
+            <div className="col-12 col-md-6">
+              <div className="ratio ratio-16x9">
+                <MapComponent />
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-
-      {/* Map */}
-      <div className="col-12 col-md-6">
-        <div className="ratio ratio-16x9">
-          <MapComponent />
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
+      </section>
     </>
   );
 }

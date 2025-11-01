@@ -53,5 +53,8 @@ app.get(/.*/, (req, res) => res.sendFile(path.join(__dirname, "../client", "dist
 // Global Error Handler
 app.use(errorHandler);
 
-app.listen(port, () => console.log(`✅ Server is running in ${mode} mode at http://localhost:${port}`));
+// app.listen(port, () => console.log(`✅ Server is running in ${mode} mode at http://localhost:${port}`));
 
+app.listen(port, '0.0.0.0', () => {
+  console.log('Server running on http://192.168.0.135:5000');
+});

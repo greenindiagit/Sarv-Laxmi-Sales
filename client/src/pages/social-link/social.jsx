@@ -24,12 +24,12 @@ function SocialSection() {
               <a href="#" className="social-icon facebook">
                 <FaFacebook />
               </a>
-              <a href="#" className="social-icon twitter">
+              {/* <a href="#" className="social-icon twitter">
                 <FaTwitter />
               </a>
               <a href="#" className="social-icon linkedin">
                 <FaLinkedin />
-              </a>
+              </a> */}
               <a href="#" className="social-icon whatsapp">
                 <FaWhatsapp />
               </a>

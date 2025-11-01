@@ -1,20 +1,23 @@
 .cta-section {
   background-color: #fff; /* Light background */
   padding: 1rem 1rem; /* Spacing around the section */
-  color: #333; 
+  color: #333;
   border-style: none;
   border-radius: 20px;
 }
 
-.cta-left h2 {
-  font-size: 1.75rem;
+.cta-left h4 {
+  font-size: 1.8rem;
+  color: #222;
+  margin-bottom: 1rem;
 }
 
 .cta-left p {
+  margin-bottom: 1rem; /* 🟢 Adds space between paragraphs */
   font-size: 1rem;
-  margin-bottom: 0.5rem;
+  color: #555;
+  line-height: 1.6; /* 🟢 Improves readability */
 }
-
 /* Buttons */
 .cta-btn-phone,
 .cta-btn-order {
@@ -25,13 +28,13 @@
   font-size: 1.1rem;
   text-decoration: none;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
 /* Phone button */
 .cta-btn-phone {
   background-color: #e6bb00;
-  color: #0D1B2A;
+  color: #0d1b2a;
   border: 2px solid #e6bb00;
 }
 
@@ -42,39 +45,52 @@
 
 /* Order button */
 .cta-btn-order {
-  background-color:#e6bb00; /* Amber color */
-  color: #0D1B2A;
+  background-color: #e6bb00; /* Amber color */
+  color: #0d1b2a;
   border: 2px solid #e6bb00;
 }
 
 .cta-btn-order:hover {
   background-color: #e6bb00; /* darker amber */
-  color:#ffffff;
+  color: #ffffff;
 }
 
-/* Responsive adjustments */
-@media (min-width: 576px) and (max-width: 991px) {
+@media (max-width: 575.98px) {
   .cta-section {
     flex-direction: column;
+    align-items: center;
     text-align: center;
+    gap: 10px;
   }
 
   .cta-left {
     text-align: center;
   }
+  .cta-left h4 {
+    font-size: 1.2rem;
+    margin-bottom: 0.8rem;
+  }
+  .cta-left p {
+    font-size: 0.85rem;
+    margin-bottom: 0.7rem; /* 🟢 Controlled spacing for mobile */
+    line-height: 1.5;
+    text-align: start;;
+  }
 
   .cta-right {
     width: 100%;
-  }
-    .cta-left h2 {
-    font-size: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
   }
 
-  .cta-btn-phone{
+  .cta-btn-phone {
     font-size: 9px;
+    padding: 6px 10px;
   }
+
   .cta-btn-order {
     font-size: 12px;
+    padding: 8px 12px;
   }
 }
-

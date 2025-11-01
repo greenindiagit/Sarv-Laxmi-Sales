@@ -2,7 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 // If using React Icons
 import { FaEye, FaShoppingCart } from "react-icons/fa";
-import "../../index.css"
+import "../../index.css";
 
 const products = [
   {
@@ -56,76 +56,61 @@ function HomePageProduct() {
   const navigate = useNavigate();
 
   return (
-      <div className="container">
-        <p className="text-muted mb-5">
-          Founded in 2018, Sarv Laxmi Sales Corporation is a leading
-          Manufacturer, Wholesaler, and Retailer of premium quality security
-          seals and locks. With a commitment to innovation, durability, and
-          customer trust, we serve clients across India and the globe.
-        </p>
+   <div className="container py-3">
+  <p className="text-muted mb-5 hide-mobile">
+    Founded in 2018, Sarv Laxmi Sales Corporation is a leading Manufacturer,
+    Wholesaler, and Retailer of premium quality security seals and locks.
+    With a commitment to innovation, durability, and customer trust, we
+    serve clients across India and the globe.
+  </p>
 
-        <div className="row">
-          {products.map((product, index) => (
-            <div className="col-md-4 mb-4" key={index}>
-              <div className="product-card">
-                {/* Product Image Container */}
-                <div className="product-image-container">
-                  <img
-                    src={product.img}
-                    alt={product.title}
-                    className="product-image"
-                    onClick={() => navigate("/quate")}
-                  />
-                  {/* Overlay with quick action buttons */}
-                  <div className="product-overlay">
-                    <button
-                      className="btn-overlay btn-view"
-                      onClick={() => navigate("/quate")}
-                    >
-                      <FaEye />
-                    </button>
-                    {/* <button className="btn-overlay btn-cart">
-                      <FaShoppingCart />
-                    </button> */}
-                  </div>
-                  {/* Optional badge */}
-                </div>
+  <div className="row g-3">
+    {products.map((product, index) => (
+      <div className="col-6 col-md-4 mb-4" key={index}>
+        <div className="product-card h-100 d-flex flex-column justify-content-between">
+          {/* Image */}
+          <div className="product-image-container">
+            <img
+              src={product.img}
+              alt={product.title}
+              className="product-image"
+              onClick={() => navigate("/quate")}
+            />
+            {/* <div className="product-overlay">
+              <button
+                className="btn-overlay btn-view"
+                onClick={() => navigate("/quate")}
+              >
+                <FaEye />
+              </button>
+            </div> */}
+          </div>
 
-                {/* Product Content */}
-                <div className="product-content">
-                  <h5
-                    className="product-title"
-                    onClick={() => navigate("/quate")}
-                  >
-                    {product.title}
-                  </h5>
-                  <p className="product-description">{product.desc}</p>
+          {/* Product Details */}
+          <div className="product-content flex-grow-1 text-center">
+            <h5
+              className="product-title mt-2"
+              onClick={() => navigate("/quate")}
+            >
+              {product.title}
+            </h5>
 
-                  {/* Price and Rating */}
-                  <div className="product-footer">
-                    <div className="product-price">
-                      <span className="price-current">₹2,499</span>
-                      <span className="price-old">₹3,999</span>
-                    </div>
-                    <div className="product-rating">
-                      <span className="stars">★★★★☆</span>
-                      <span className="rating-count">(24)</span>
-                    </div>
-                  </div>
-
-                  {/* Action Button */}
-                  <button
-                    className="btn btn-primary w-100"
-                    onClick={() => navigate("/quate")}
-                  >
-                    Get Quote
-                  </button>
-                </div>
-              </div>
-            </div>
-          ))}
+            <p className="product-description  hide-mobile">
+              {product.desc}
+            </p>
+            <button
+              className="btn btn-warning"
+              onClick={() => navigate("/quate")}
+            >
+              Get Quote
+            </button>
+          </div>
         </div>
       </div>
+    ))}
+  </div>
+</div>
+
   );
 }
 
