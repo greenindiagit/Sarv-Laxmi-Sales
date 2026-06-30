@@ -8,11 +8,16 @@ import { buildPagination } from "../../utilities/pagination.js";
 import {sendEmail} from "../../utilities/sendEmail.js"; // ⬅️ add if you have a mail utility
 
 
-
+// ✅ Add this function
+const generateToken = (id) => {
+  return jwt.sign({ id }, process.env.JWT_SECRET || "defaultsecretkey", {
+    expiresIn: "7d",
+  });
+};
 // 🔹 Register user
 export const registerUser = asyncHandler(async (req, res) => {
   const { name, email, mobile, password, role } = req.body;
-console.log("📩 Received form data:", req.body);
+// console.log("📩 Received form data:", req.body);
   const existingUserByEmail = await UserModel.findOne({ email });
   if (existingUserByEmail) {
     throw new ApiError(400, "User already exists with this email id");
@@ -130,17 +135,24 @@ export const changePassword = asyncHandler(async (req, res) => {
   const { id } = req.params;
   const { oldPassword, newPassword } = req.body;
 
-  const user = await UserModel.findById(id);
+  console.log("🟢 changePassword called with:", { id, oldPassword, newPassword });
+
+  // 🔹 Explicitly select password (since it's select: false in schema)
+  const user = await UserModel.findById(id).select("+password");
   if (!user) throw new ApiError(404, "User not found");
 
+  // 🔹 Verify old password
   const isMatch = await bcrypt.compare(oldPassword, user.password);
   if (!isMatch) throw new ApiError(400, "Old password is incorrect");
 
-  user.password = await bcrypt.hash(newPassword, 10);
+  // 🔹 Set new password (pre-save hook will hash it automatically)
+  user.password = newPassword;
+
   await user.save();
 
   res.json({ success: true, message: "Password updated successfully" });
 });
+
 
 // 🔹 Request Password Reset
 export const requestPasswordReset = asyncHandler(async (req, res) => {

@@ -27,7 +27,7 @@ const productSchema = new mongoose.Schema({
     enum: [0, 1],
     default: 1,
   },
-  image: { type: String, required: true },
+  image: { type: String, required: false },
   description: { type: [String], required: true },
   createdBy: { type: String, required: false },
   createdDate: { type: Date, default: Date.now },

@@ -79,18 +79,24 @@ const UserList = () => {
     }
   };
 
-  const handleDelete = async (id) => {
-    if (!window.confirm("Are you sure you want to delete this user?")) return;
-    try {
-      await axios.delete(`${apis.user.delete}/${id}`, {
-        headers: { Authorization: validToken },
-      });
-      setUsers((prev) => prev.filter((u) => u._id !== id));
-    } catch (err) {
-      console.error("Error deleting user:", err);
-      alert(err.response?.data?.message || "Something went wrong");
-    }
-  };
+const handleDelete = async (id) => {
+  if (!window.confirm("Are you sure you want to delete this user?")) return;
+
+  try {
+    const response = await axios.delete(apis.user.delete(id), {
+      headers: { Authorization: validToken },
+    });
+
+    console.log("✅ User deleted successfully:", response.data);
+
+    // Update UI immediately after delete
+    setUsers((prev) => prev.filter((u) => u._id !== id));
+  } catch (err) {
+    console.error("❌ Error deleting user:", err);
+    alert(err.response?.data?.message || "Something went wrong while deleting the user.");
+  }
+};
+
 
   const handleEdit = (user) => {
     setEditingUser(user);

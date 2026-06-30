@@ -105,7 +105,7 @@ const BannersList = () => {
     });
 
     try {
-      const response = await axios.post(apis.Banners.add, data, {
+      const response = await axios.post(apis.Banners.create, data, {
         headers: {
           Authorization: `Bearer ${validToken}`,
           "Content-Type": "multipart/form-data",

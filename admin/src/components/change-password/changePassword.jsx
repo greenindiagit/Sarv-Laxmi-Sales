@@ -1,13 +1,13 @@
 import React, { useState } from "react";
-import axiosInstance from "../../api/axiosInstance";
-import API_PATHS from "../../api/apiUrl";
-
-const ChangePasswordModal = ({ userId, show, onClose }) => {
+import { useAuth } from "../../context/auth.context";
+import axios from "axios";
+import apis from "../../api/apis"
+const ChangePasswordModal = ({userId ,show, onClose }) => {
   const [oldPassword, setOldPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [message, setMessage] = useState("");
-
+ const { validToken } = useAuth();
   const handleChangePassword = async (e) => {
   e.preventDefault();
 
@@ -23,10 +23,13 @@ const ChangePasswordModal = ({ userId, show, onClose }) => {
 
   try {
     // ✅ Correct API endpoint
-    const res = await axiosInstance.put(`${API_PATHS.passwordChange}/${userId}`, {
-      oldPassword,
-      newPassword,
-    });
+   
+     await axios.put( apis.passwordChange.update(userId),
+      { oldPassword, newPassword },
+      { headers: { Authorization: validToken } },
+    
+    );
+  
 
     setMessage("✅ Password changed successfully!");
     setOldPassword("");

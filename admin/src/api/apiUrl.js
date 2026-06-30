@@ -11,6 +11,7 @@ const API_PATHS = {
   users: "/api/users",
   updateUser: "/api/users",
   deleteUsers: "/api/users",
+  
   passwordReset: "/api/users/request-reset", // 🔹 fixed
   resetPassword: "/api/users/reset-password", // 🔹 added
    Banners: "/api/banners",

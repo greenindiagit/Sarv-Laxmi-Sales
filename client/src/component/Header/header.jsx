@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { FaWhatsapp } from "react-icons/fa";
-import logo from "/logo/logo.webp";
+import logo from "/logo/logo.png";
 import "./header.css";
 
 export default function Header() {

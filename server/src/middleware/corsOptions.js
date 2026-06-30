@@ -2,6 +2,7 @@ const allowedOrigins = [
   process.env.FRONTEND_URL,   
   process.env.ADMIN_URL,
   "http://192.168.1.62:5173"
+  
 ];
 
 export default {

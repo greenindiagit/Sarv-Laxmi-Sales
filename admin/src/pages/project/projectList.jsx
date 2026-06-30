@@ -98,11 +98,14 @@ const ProjectList = () => {
     if (formData.image) dataToSend.append("image", formData.image);
 
     try {
-      const response = await axiosInstance.post(
-        API_PATHS.Projects,
-        dataToSend,
+      const response = await axios.post(
+        apis.product.create,
+        dataToSend, // <-- your FormData or JSON object
         {
-          headers: { "Content-Type": "multipart/form-data" },
+          headers: {
+            Authorization: validToken,
+            "Content-Type": "multipart/form-data",
+          },
         }
       );
 
@@ -150,15 +153,21 @@ const ProjectList = () => {
     );
     dataToSend.append("status", formData.status);
 
+
     if (formData.image) dataToSend.append("image", formData.image);
 
     try {
-      const response = await axiosInstance.put(
-        `${API_PATHS.ProjectEdit}/${editingProject._id}`,
-        dataToSend,
-        { headers: { "Content-Type": "multipart/form-data" } }
+      const response = await axios.put(
+        `${apis.product.update}/${editingProject._id}`,
+        dataToSend, // <-- payload (FormData)
+        {
+          headers: {
+            Authorization: validToken,
+            "Content-Type": "multipart/form-data",
+          },
+        }
       );
-
+      console.log(response);
       setProjects((prev) =>
         prev.map((p) =>
           p._id === editingProject._id ? response.data.product : p

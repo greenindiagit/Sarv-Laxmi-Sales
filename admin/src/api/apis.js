@@ -1,11 +1,11 @@
 export const BASE_URL = import.meta.env.VITE_API_BASE_URL;
-  
+
 const apis = {
   product: {
-    create: `${BASE_URL}/api/admin/products/create-products`,
+    create: `${BASE_URL}/api/common/products/create-products`,
     get: `${BASE_URL}/api/common/products/products`,
-    update: `${BASE_URL}/api/admin/products/update-products`,
-    delete: `${BASE_URL}/api/admin/products/delete-products`,
+    update: (id) => `${BASE_URL}/api/common/products/update-products/${id}`,
+    delete: (id) => `${BASE_URL}/api/common/products/delete-products/${id}`,
   },
   productMaster: {
     create: `${BASE_URL}/api/common/products/product-master`,
@@ -30,6 +30,7 @@ const apis = {
   passwordChange: {
     passwordReset: `${BASE_URL}/api/admin/users/request-reset`,
     resetPassword: `${BASE_URL}/api/admin/users/reset-password`,
+    update: (id) => `${BASE_URL}/api/admin/users/change-password/${id}`,
   },
   Banners: {
     create: `${BASE_URL}/api/common/banners/banners`,
@@ -43,5 +44,5 @@ const apis = {
   },
 };
 
-//  console.log(apis.productMaster.get);
+//  console.log(apis.product.update);
 export default apis;

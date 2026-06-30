@@ -1,14 +1,14 @@
-import { productAdd, productType,productMasterAdd } from "../../models/productAdd.js";
-
+import {
+  productAdd,
+  productType,
+  productMasterAdd,
+} from "../../models/productAdd.js";
 
 // -------------Product Master ---------------
 export const ProductMasterAdd = async (req, res) => {
   try {
-    const { name, url, description} =
-      req.body;
+    const { name, url, description } = req.body;
 
- 
-    
     let statusNumber = 1; // default active
     if (req.body.status === "inactive") statusNumber = 0;
     const newProductMaster = new productMasterAdd({
@@ -20,9 +20,10 @@ export const ProductMasterAdd = async (req, res) => {
 
     await newProductMaster.save();
 
-    res
-      .status(201)
-      .json({ message: "Product saved successfully", product: newProductMaster });
+    res.status(201).json({
+      message: "Product saved successfully",
+      product: newProductMaster,
+    });
   } catch (error) {
     console.error("Error saving Product:", error);
     res.status(500).json({ error: error.message });
@@ -44,8 +45,7 @@ export const updateProductMaster = async (req, res) => {
     const { id } = req.params;
 
     // Extract fields from form-data
-    const { name, url, description, status } =
-      req.body;
+    const { name, url, description, status } = req.body;
     // Prepare updated fields
     const updatedData = {
       name,
@@ -117,9 +117,7 @@ export const addProduct = async (req, res) => {
       }
     }
 
-    const imagePath = req.file
-      ? `/uploads/products/${req.file.filename}`
-      : null;
+    const imagePath = req.file ? `uploads/products/${req.file.filename}` : null;
     let statusNumber = 1; // default active
     if (req.body.status === "inactive") statusNumber = 0;
     const newProduct = new productAdd({
@@ -152,12 +150,18 @@ export const updateProduct = async (req, res) => {
     const { name, code, currentPrice, oldPrice, rating, description, status } =
       req.body;
 
-    const descriptionParsed =
-      typeof description === "string" ? JSON.parse(description) : description;
+     let descriptionParsed = description;
+    if (typeof description === "string") {
+      try {
+        descriptionParsed = JSON.parse(description);
+      } catch {
+        descriptionParsed = description; // plain text, ignore parse error
+      }
+    }
 
     // If a new file is uploaded, use its path
     const imagePath = req.file
-      ? `/uploads/products/${req.file.filename}`
+      ? `uploads/products/${req.file.filename}`
       : undefined;
 
     // Prepare updated fields
@@ -172,7 +176,7 @@ export const updateProduct = async (req, res) => {
     };
 
     if (imagePath) updatedData.image = imagePath; // only replace image if new file uploaded
-
+console.log(imagePath);
     // Update product
     const updatedProduct = await productAdd.findByIdAndUpdate(
       req.params.id,
@@ -209,7 +213,6 @@ export const deleteProduct = async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 };
-
 
 // ----------------- Product Type -----------------
 // get api
@@ -325,9 +328,13 @@ export const ProductTypesEdit = async (req, res) => {
     if (imagePath) updatedData.image = imagePath;
 
     // Update product type in DB
-    const updatedProductType = await productType.findByIdAndUpdate(id, updatedData, {
-      new: true,
-    });
+    const updatedProductType = await productType.findByIdAndUpdate(
+      id,
+      updatedData,
+      {
+        new: true,
+      }
+    );
 
     if (!updatedProductType) {
       return res.status(404).json({ error: "Product type not found" });

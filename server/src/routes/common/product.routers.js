@@ -46,10 +46,10 @@ router.get("/product-master", getProductMaster);
 router.delete("/product-master/:id", deleteProductMaster);
 router.put("/product-master/:id", updateProductMaster);
 // ---------- Product routes ----------
-router.post("/products", uploadProduct.single("image"), addProduct);
+router.post("/create-products", uploadProduct.single("image"), addProduct);
 router.get("/products", getProducts);
-router.delete("/products/:id", deleteProduct);
-router.put("/products/:id", uploadProduct.single("image"), updateProduct);
+router.delete("/delete-products/:id", deleteProduct);
+router.put("/update-products/:id", uploadProduct.single("image"), updateProduct);
 // ---------- Product Type routes ----------
 router.post("/product-type", uploadProductType.single("image"), addProductType);
 router.get("/product-type", getProductType);

@@ -8,7 +8,7 @@ import apis from "../../api/apis";
 const LoginPage = () => {
   const { storeToken } = useAuth();
   const navigate = useNavigate();
-  const [email, setMobile] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
 
@@ -16,7 +16,7 @@ const LoginPage = () => {
     e.preventDefault();
 
     if (!email) {
-      toast.error("Mobile number is required");
+      toast.error("Email number is required");
       return;
     };
 
@@ -33,7 +33,7 @@ const LoginPage = () => {
         toast.success("Login successful");
         await storeToken(response?.data?.token);
        navigate("/dashboard");
-         console.log("Stored token:", response?.data?.token);
+        // console.log("Stored token:", response?.data?.token);
       } else {
         toast.error("Something went wrong");
       };
@@ -59,7 +59,7 @@ const LoginPage = () => {
                 className="form-control rounded-pill"
                 placeholder="Username"
                 value={email}
-                onChange={(e) => setMobile(e.target.value)}
+                onChange={(e) => setEmail(e.target.value)}
               />
             </div>
             <div className="mb-3">

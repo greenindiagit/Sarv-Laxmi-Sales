@@ -33,7 +33,7 @@ export default function Home() {
   return (
     <>
       <section className="section-light">
-        <div className="container">
+        <div className="container section-light">
           {/* Banner Carousel */}
           <div className="w-full">
             <Carousel
