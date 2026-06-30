@@ -5,5 +5,5 @@ MONGODB_URI=mongodb://admin:sarvesh%401415@66.116.244.119:27017/sarvlaxmiDB?auth
 NODE_ENV=development
 JWT_SECRET_KEY=sarv-laxmi-sales@app
 EXPIRES_IN=1d
-FRONTEND_URL=https://www.sarvlaxmisales.com
-ADMIN_URL=https://www.sarvlaxmisales.com/admin
+FRONTEND_URL=https://sarvlaxmisales.com
+ADMIN_URL=https://sarvlaxmisales.com/admin

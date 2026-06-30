@@ -13,17 +13,22 @@ export default function Home() {
   const [banners, setBanners] = useState([]);
   const [loading, setLoading] = useState(true);
   // Fetch banners from backend
-  const fetchBanners = async () => {
-    try {
-      const response = await postData(null, Urls.Banners, "GET");
-      setBanners(response.data || response || []);
-    } catch (error) {
-      console.error("Failed to fetch banners", error);
-    } finally {
-      setLoading(false);
-    }
-  };
+const fetchBanners = async () => {
+  try {
+    const response = await postData(null, Urls.Banners, "GET");
 
+    console.log("BANNERS API:", response);
+
+    const data = response?.data;
+
+    setBanners(Array.isArray(data) ? data : []);
+  } catch (error) {
+    console.error("Failed to fetch banners", error);
+    setBanners([]);
+  } finally {
+    setLoading(false);
+  }
+};
   useEffect(() => {
     fetchBanners();
   }, []);
@@ -79,3 +84,6 @@ export default function Home() {
     </>
   );
 }
+
+
+
