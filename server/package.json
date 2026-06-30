@@ -28,7 +28,11 @@
     "validator": "^13.15.15"
   },
   "devDependencies": {
+<<<<<<< HEAD
     "concurrently": "^10.0.3",
+=======
+    "concurrently": "^9.2.3",
+>>>>>>> 411ca69bce98f67aabf2e008d5be3cdee5c9218f
     "nodemon": "^3.1.10"
   }
 }

@@ -1,4 +1,4 @@
-import ContactUs from '../../models/ContactUs.js';
+import ContactUs from "../../models/contactUs.js";
 import ApiError from "../../helpers/apiError.js";
 import asyncHandler from "../../helpers/asyncHandler.js";
 

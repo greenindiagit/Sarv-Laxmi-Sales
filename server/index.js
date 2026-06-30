@@ -56,5 +56,5 @@ app.use(errorHandler);
 // app.listen(port, () => console.log(`✅ Server is running in ${mode} mode at http://localhost:${port}`));
 
 app.listen(port, '0.0.0.0', () => {
-  console.log('Server running on http://192.168.0.135:5000');
+  console.log('Server running on http://66.116.244.119:5000');
 });
