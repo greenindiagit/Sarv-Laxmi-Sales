@@ -27,8 +27,8 @@ function CTA() {
 
       {/* Right Column */}
       <div className="col-lg-3 d-flex flex-column gap-3 align-items-center align-items-lg-end cta-right mt-4 mt-lg-0">
-        <a href="tel:+919555541415" className="cta-btn-phone">
-          +91-9555541415
+        <a href="tel:+918115131513" className="cta-btn-phone">
+          +91-81-1513-1513
         </a>
         <button
           type="button"

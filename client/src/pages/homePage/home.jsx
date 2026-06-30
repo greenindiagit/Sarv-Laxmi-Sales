@@ -13,22 +13,18 @@ export default function Home() {
   const [banners, setBanners] = useState([]);
   const [loading, setLoading] = useState(true);
   // Fetch banners from backend
-const fetchBanners = async () => {
-  try {
-    const response = await postData(null, Urls.Banners, "GET");
+  const fetchBanners = async () => {
+    try {
+      const response = await postData(null, Urls.Banners, "GET");
+      console.log("API Response:", response);
+      setBanners(response.data || response || []);
+    } catch (error) {
+      console.error("Failed to fetch banners", error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
-    console.log("BANNERS API:", response);
-
-    const data = response?.data;
-
-    setBanners(Array.isArray(data) ? data : []);
-  } catch (error) {
-    console.error("Failed to fetch banners", error);
-    setBanners([]);
-  } finally {
-    setLoading(false);
-  }
-};
   useEffect(() => {
     fetchBanners();
   }, []);
@@ -38,7 +34,7 @@ const fetchBanners = async () => {
   return (
     <>
       <section className="section-light">
-        <div className="container section-light">
+        <div className="container">
           {/* Banner Carousel */}
           <div className="w-full">
             <Carousel
@@ -60,9 +56,9 @@ const fetchBanners = async () => {
                     className="banner-img w-100"
                   />
                   <div className="banner-overlay position-absolute top-50 start-50 translate-middle text-center text-white">
-                    <h2 className="fw-bold  fs-md-2">{banner.title}</h2>
+                    <h2 className="fw-bold fs-4 fs-md-2">{banner.title}</h2>
                     <div className="banner-subtext">{banner.subtitle}</div>
-                    <h3 className="fw-bold mb-3  fs-md-3">
+                    <h3 className="fw-bold mb-3 fs-5 fs-md-3">
                       {banner.company}
                     </h3>
                   </div>
@@ -84,6 +80,3 @@ const fetchBanners = async () => {
     </>
   );
 }
-
-
-

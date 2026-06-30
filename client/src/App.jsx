@@ -12,7 +12,10 @@ import Padlock from "./pages/products/Padlock";
 import PlasticSeal from "./pages/products/PlasticSeal";
 import ProductList from "./pages/products/ProductList";
 import SealCutter from "./pages/products/SealCutter";
+import Disclaimer from "./pages/quick/disclaimer";
 
+import TermsConditions from "./pages/quick/terms-conditions";
+import Parivacy from "./pages/quick/parivacy-policy";
 function App() {
   return (
     <div>
@@ -29,6 +32,9 @@ function App() {
           <Route path="/plastic" element={<PlasticSeal />} />
           <Route path="/product" element={<ProductList />} />
           <Route path="/cutter" element={<SealCutter />} />
+          <Route path="/disclaimer" element={<Disclaimer />} />
+          <Route path="/term-condition" element={<TermsConditions />} />
+          <Route path="/parivacy-policy" element={<Parivacy />} />
         </Route>
       </Routes>
     </div>

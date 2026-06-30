@@ -10,6 +10,7 @@ import React, { useState } from "react";
 import ChatModal from "../../pages/chat";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faComment } from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router-dom";
 import "./footer.css";
 
 function Footer() {
@@ -24,7 +25,7 @@ function Footer() {
           <div className="row">
             <div className="col-md-3">
               {/* <!-- Address --> */}
-              <h5 className="mb-3">Address</h5>
+              {/* <h5 className="mb-3">Address</h5>
               <p className="small mb-1">
                 Basement Floor, At-110, Main Market Road, Sultanpur, Near Peer
                 Baba,
@@ -32,7 +33,22 @@ function Footer() {
                 New Delhi - 110030, INDIA.
                 <br />
                 GST TIN – 07BKWPM4815J1ZJ
-              </p>
+              </p> */}
+              <h5 className="mb-3">Quick Link</h5>
+           
+                <ul className="footer-links">
+                  <li>
+                    <Link to="/disclaimer">Disclaimer</Link>
+                  </li>
+
+                  <li>
+                    <Link to="/term-condition">Terms & Conditions</Link>
+                  </li>
+
+                  <li>
+                    <Link to="/parivacy-policy">Privacy Policy</Link>
+                  </li>
+                </ul>
             </div>
             <div className="col-md-3">
               {/* <!-- Sales Phone & Email --> */}
@@ -99,19 +115,19 @@ function Footer() {
               Rights Reserved. CIN: U51909DL2022PTC406952
             </div>
             {/* Footer bottom */}
-         <div className="chat-wrapper">
-              <button
-                  onClick={handleClick}
-                  className="icon-chat"
-                >
-                  <FontAwesomeIcon icon={faComment}  className="custom-comment-icon"  />
-                </button>
+            <div className="chat-wrapper">
+              <button onClick={handleClick} className="icon-chat">
+                <FontAwesomeIcon
+                  icon={faComment}
+                  className="custom-comment-icon"
+                />
+              </button>
 
-                {/* Modal render conditionally but Hooks inside ChatModal must be top-level */}
-                {isChatOpen && <ChatModal onClose={handleClose} />}
-              </div>
+              {/* Modal render conditionally but Hooks inside ChatModal must be top-level */}
+              {isChatOpen && <ChatModal onClose={handleClose} />}
             </div>
           </div>
+        </div>
       </footer>
     </>
   );

@@ -273,7 +273,7 @@ export default function About() {
           <div className="row align-items-center g-5">
             <div className="col-md-6">
               <img
-                src="/sarvlaxmi.jpg"
+                src="/poster.jpeg"
                 alt="Team Meeting"
                 className="img-fluid rounded shadow"
               />

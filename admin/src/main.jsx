@@ -9,7 +9,7 @@ import { ToastContainer } from "react-toastify";
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
      <AuthProvider>
-    <BrowserRouter basename="/admin/">
+    <BrowserRouter basename="/admin">
       <App />
       <ToastContainer
         position="top-right"

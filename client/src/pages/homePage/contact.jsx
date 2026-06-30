@@ -88,8 +88,7 @@ const handleSubmit = async (e) => {
               <div className="contact-info-item">
                 <strong>Address:</strong>
                 <p>
-                  Basement Floor, At-110, Main Market Road, Sultanpur, Near Peer
-                  Baba, New Delhi - 110030, INDIA
+                 Ground Floor, Plot No-2, Khasra No-408, Main Road, Sultanpur, New Delhi-110030, 
                 </p>
               </div>
               <div className="contact-info-item">
@@ -99,16 +98,13 @@ const handleSubmit = async (e) => {
               <div className="contact-info-item">
                 <strong>Email:</strong>
                 <p>
-                  <a href="mailto:sarvlaxmi2019@gmail.com">
-                    sarvlaxmi2019@gmail.com
-                  </a>
-                  ,<a href="mailto:otlseals@gmail.com">otlseals@gmail.com</a>
+                  <a href="mailto:otlseals@gmail.com">otlseals@gmail.com</a>
                 </p>
               </div>
               <div className="contact-info-item">
                 <strong>Phone / WhatsApp:</strong>
                 <p>
-                  <a href="tel:+919555541415">+91-955-5541-415</a>
+                  <a href="tel:+918115131513">+91-81-1513-1513</a>
                 </p>
               </div>
             </div>
